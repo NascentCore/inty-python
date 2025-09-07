@@ -89,7 +89,7 @@ class Inty(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("INTY_BASE_URL")
         if base_url is None:
-            base_url = f"https://api.example.com"
+            base_url = f"https://app.inty.cc"
 
         super().__init__(
             version=__version__,
@@ -276,7 +276,7 @@ class AsyncInty(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("INTY_BASE_URL")
         if base_url is None:
-            base_url = f"https://api.example.com"
+            base_url = f"https://app.inty.cc"
 
         super().__init__(
             version=__version__,
