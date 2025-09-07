@@ -1,0 +1,258 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing import Optional
+
+import httpx
+
+from ....._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ....._utils import maybe_transform, async_maybe_transform
+from ....._compat import cached_property
+from ....._resource import SyncAPIResource, AsyncAPIResource
+from ....._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
+from ....._base_client import make_request_options
+from .....types.api.v1.users import Gender, profile_update_params
+from .....types.api.v1.users.user import User
+from .....types.api.v1.users.gender import Gender
+
+__all__ = ["ProfileResource", "AsyncProfileResource"]
+
+
+class ProfileResource(SyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> ProfileResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/inty-python#accessing-raw-response-data-eg-headers
+        """
+        return ProfileResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ProfileResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/inty-python#with_streaming_response
+        """
+        return ProfileResourceWithStreamingResponse(self)
+
+    def retrieve(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> User:
+        """Get current user profile."""
+        return self._get(
+            "/api/v1/users/profile",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=User,
+        )
+
+    def update(
+        self,
+        *,
+        age_group: Optional[str] | NotGiven = NOT_GIVEN,
+        avatar: Optional[str] | NotGiven = NOT_GIVEN,
+        description: Optional[str] | NotGiven = NOT_GIVEN,
+        email: Optional[str] | NotGiven = NOT_GIVEN,
+        gender: Optional[Gender] | NotGiven = NOT_GIVEN,
+        nickname: Optional[str] | NotGiven = NOT_GIVEN,
+        phone: Optional[str] | NotGiven = NOT_GIVEN,
+        system_language: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> User:
+        """
+        Update current user profile.
+
+        Args:
+          gender: 性别
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._put(
+            "/api/v1/users/profile",
+            body=maybe_transform(
+                {
+                    "age_group": age_group,
+                    "avatar": avatar,
+                    "description": description,
+                    "email": email,
+                    "gender": gender,
+                    "nickname": nickname,
+                    "phone": phone,
+                    "system_language": system_language,
+                },
+                profile_update_params.ProfileUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=User,
+        )
+
+
+class AsyncProfileResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncProfileResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/inty-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncProfileResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncProfileResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/inty-python#with_streaming_response
+        """
+        return AsyncProfileResourceWithStreamingResponse(self)
+
+    async def retrieve(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> User:
+        """Get current user profile."""
+        return await self._get(
+            "/api/v1/users/profile",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=User,
+        )
+
+    async def update(
+        self,
+        *,
+        age_group: Optional[str] | NotGiven = NOT_GIVEN,
+        avatar: Optional[str] | NotGiven = NOT_GIVEN,
+        description: Optional[str] | NotGiven = NOT_GIVEN,
+        email: Optional[str] | NotGiven = NOT_GIVEN,
+        gender: Optional[Gender] | NotGiven = NOT_GIVEN,
+        nickname: Optional[str] | NotGiven = NOT_GIVEN,
+        phone: Optional[str] | NotGiven = NOT_GIVEN,
+        system_language: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> User:
+        """
+        Update current user profile.
+
+        Args:
+          gender: 性别
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._put(
+            "/api/v1/users/profile",
+            body=await async_maybe_transform(
+                {
+                    "age_group": age_group,
+                    "avatar": avatar,
+                    "description": description,
+                    "email": email,
+                    "gender": gender,
+                    "nickname": nickname,
+                    "phone": phone,
+                    "system_language": system_language,
+                },
+                profile_update_params.ProfileUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=User,
+        )
+
+
+class ProfileResourceWithRawResponse:
+    def __init__(self, profile: ProfileResource) -> None:
+        self._profile = profile
+
+        self.retrieve = to_raw_response_wrapper(
+            profile.retrieve,
+        )
+        self.update = to_raw_response_wrapper(
+            profile.update,
+        )
+
+
+class AsyncProfileResourceWithRawResponse:
+    def __init__(self, profile: AsyncProfileResource) -> None:
+        self._profile = profile
+
+        self.retrieve = async_to_raw_response_wrapper(
+            profile.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            profile.update,
+        )
+
+
+class ProfileResourceWithStreamingResponse:
+    def __init__(self, profile: ProfileResource) -> None:
+        self._profile = profile
+
+        self.retrieve = to_streamed_response_wrapper(
+            profile.retrieve,
+        )
+        self.update = to_streamed_response_wrapper(
+            profile.update,
+        )
+
+
+class AsyncProfileResourceWithStreamingResponse:
+    def __init__(self, profile: AsyncProfileResource) -> None:
+        self._profile = profile
+
+        self.retrieve = async_to_streamed_response_wrapper(
+            profile.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            profile.update,
+        )
