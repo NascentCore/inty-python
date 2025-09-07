@@ -17,7 +17,7 @@ The full API of this library can be found in [api.md](api.md).
 
 ```sh
 # install from this staging repo
-pip install git+ssh://git@github.com/stainless-sdks/inty-python.git
+pip install git+ssh://git@github.com/NascentCore/inty-python.git/
 ```
 
 > [!NOTE]
