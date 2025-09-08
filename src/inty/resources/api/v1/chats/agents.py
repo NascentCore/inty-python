@@ -106,7 +106,8 @@ class AgentsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ChatSettings:
         """
-        Get chat settings by Agent ID
+        Get chat settings by Agent ID, bause we only support 1 chat per agent, so we do
+        not use chat_id to get settings
 
         Args:
           extra_headers: Send extra headers
@@ -213,7 +214,8 @@ class AsyncAgentsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ChatSettings:
         """
-        Get chat settings by Agent ID
+        Get chat settings by Agent ID, bause we only support 1 chat per agent, so we do
+        not use chat_id to get settings
 
         Args:
           extra_headers: Send extra headers
