@@ -54,7 +54,7 @@ class AdminResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/inty-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/NascentCore/inty-python#accessing-raw-response-data-eg-headers
         """
         return AdminResourceWithRawResponse(self)
 
@@ -63,7 +63,7 @@ class AdminResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/inty-python#with_streaming_response
+        For more information, see https://www.github.com/NascentCore/inty-python#with_streaming_response
         """
         return AdminResourceWithStreamingResponse(self)
 
@@ -130,7 +130,7 @@ class AsyncAdminResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/inty-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/NascentCore/inty-python#accessing-raw-response-data-eg-headers
         """
         return AsyncAdminResourceWithRawResponse(self)
 
@@ -139,7 +139,7 @@ class AsyncAdminResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/inty-python#with_streaming_response
+        For more information, see https://www.github.com/NascentCore/inty-python#with_streaming_response
         """
         return AsyncAdminResourceWithStreamingResponse(self)
 
