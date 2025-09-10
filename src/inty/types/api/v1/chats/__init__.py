@@ -4,3 +4,6 @@ from __future__ import annotations
 
 from .chat_settings import ChatSettings as ChatSettings
 from .agent_get_messages_params import AgentGetMessagesParams as AgentGetMessagesParams
+from .agent_update_chat_settings_params import AgentUpdateChatSettingsParams as AgentUpdateChatSettingsParams
+from .agent_generate_message_voice_params import AgentGenerateMessageVoiceParams as AgentGenerateMessageVoiceParams
+from .agent_update_chat_settings_response import AgentUpdateChatSettingsResponse as AgentUpdateChatSettingsResponse
