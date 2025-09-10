@@ -51,6 +51,8 @@ class Agent(BaseModel):
     creator_notes: Optional[str] = None
     """创作者备注"""
 
+    deleted_at: Optional[int] = None
+
     extensions: Optional[Dict[str, object]] = None
 
     follower_count: Optional[int] = None
@@ -72,6 +74,8 @@ class Agent(BaseModel):
     """模式提示词 - 放在角色卡提示词后面，覆盖全局默认模式提示词"""
 
     opening: Optional[str] = None
+
+    opening_audio_url: Optional[str] = None
 
     personality: Optional[str] = None
     """角色性格特点 (推荐)"""

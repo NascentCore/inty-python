@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 
 from ...._models import BaseModel
 
@@ -34,6 +34,9 @@ class Data(BaseModel):
 
     error: Optional[str] = None
     """错误信息"""
+
+    force_update_reasons: Optional[List[str]] = None
+    """强制更新的具体原因列表"""
 
     latest_version_code: Optional[int] = None
     """最新版本代码"""
