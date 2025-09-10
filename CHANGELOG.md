@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 (2025-09-10)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/NascentCore/inty-python/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** manual updates ([297f92d](https://github.com/NascentCore/inty-python/commit/297f92d178675adb0c2aa5500c523abea874b358))
+
 ## 0.3.0 (2025-09-10)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/NascentCore/inty-python/compare/v0.2.0...v0.3.0)
