@@ -54,6 +54,8 @@ class AgentCreateParams(TypedDict, total=False):
 
     opening: Optional[str]
 
+    opening_audio_url: Optional[str]
+
     personality: Optional[str]
     """角色性格特点 (推荐)"""
 

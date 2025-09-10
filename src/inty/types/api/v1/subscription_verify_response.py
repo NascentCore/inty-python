@@ -9,9 +9,6 @@ __all__ = ["SubscriptionVerifyResponse", "Data"]
 
 
 class Data(BaseModel):
-    is_valid: bool
-    """是否有效，使用 is_verified 代替"""
-
     is_verified: bool
     """是否有效"""
 
