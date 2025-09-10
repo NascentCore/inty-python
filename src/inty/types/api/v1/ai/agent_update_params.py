@@ -50,6 +50,8 @@ class AgentUpdateParams(TypedDict, total=False):
 
     opening: Optional[str]
 
+    opening_audio_url: Optional[str]
+
     personality: Optional[str]
 
     photos: Optional[SequenceNotStr[str]]
