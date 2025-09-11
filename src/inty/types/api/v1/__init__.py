@@ -14,7 +14,6 @@ from .setting_update_params import SettingUpdateParams as SettingUpdateParams
 from .version_check_response import VersionCheckResponse as VersionCheckResponse
 from .auth_create_guest_params import AuthCreateGuestParams as AuthCreateGuestParams
 from .auth_create_guest_response import AuthCreateGuestResponse as AuthCreateGuestResponse
-from .report_upload_image_params import ReportUploadImageParams as ReportUploadImageParams
 from .subscription_verify_params import SubscriptionVerifyParams as SubscriptionVerifyParams
 from .user_delete_account_params import UserDeleteAccountParams as UserDeleteAccountParams
 from .subscription_verify_response import SubscriptionVerifyResponse as SubscriptionVerifyResponse
