@@ -15,7 +15,7 @@ from ....._response import (
     async_to_streamed_response_wrapper,
 )
 from ....._base_client import make_request_options
-from .....types.api.v1.chats import agent_get_messages_params
+from .....types.api.v1.chats import agent_get_messages_params, agent_generate_message_voice_params
 
 __all__ = ["AgentsResource", "AsyncAgentsResource"]
 
@@ -39,6 +39,51 @@ class AgentsResource(SyncAPIResource):
         For more information, see https://www.github.com/NascentCore/inty-python#with_streaming_response
         """
         return AgentsResourceWithStreamingResponse(self)
+
+    def generate_message_voice(
+        self,
+        message_id: str,
+        *,
+        agent_id: str,
+        language: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> object:
+        """
+        Generate voice for a message
+
+        Args:
+          language: 语言代码
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        if not message_id:
+            raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
+        return self._post(
+            f"/api/v1/chats/agents/{agent_id}/messages/{message_id}/voice",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"language": language}, agent_generate_message_voice_params.AgentGenerateMessageVoiceParams
+                ),
+            ),
+            cast_to=object,
+        )
 
     def get_messages(
         self,
@@ -114,6 +159,51 @@ class AsyncAgentsResource(AsyncAPIResource):
         """
         return AsyncAgentsResourceWithStreamingResponse(self)
 
+    async def generate_message_voice(
+        self,
+        message_id: str,
+        *,
+        agent_id: str,
+        language: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> object:
+        """
+        Generate voice for a message
+
+        Args:
+          language: 语言代码
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        if not message_id:
+            raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
+        return await self._post(
+            f"/api/v1/chats/agents/{agent_id}/messages/{message_id}/voice",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"language": language}, agent_generate_message_voice_params.AgentGenerateMessageVoiceParams
+                ),
+            ),
+            cast_to=object,
+        )
+
     async def get_messages(
         self,
         agent_id: str,
@@ -172,6 +262,9 @@ class AgentsResourceWithRawResponse:
     def __init__(self, agents: AgentsResource) -> None:
         self._agents = agents
 
+        self.generate_message_voice = to_raw_response_wrapper(
+            agents.generate_message_voice,
+        )
         self.get_messages = to_raw_response_wrapper(
             agents.get_messages,
         )
@@ -181,6 +274,9 @@ class AsyncAgentsResourceWithRawResponse:
     def __init__(self, agents: AsyncAgentsResource) -> None:
         self._agents = agents
 
+        self.generate_message_voice = async_to_raw_response_wrapper(
+            agents.generate_message_voice,
+        )
         self.get_messages = async_to_raw_response_wrapper(
             agents.get_messages,
         )
@@ -190,6 +286,9 @@ class AgentsResourceWithStreamingResponse:
     def __init__(self, agents: AgentsResource) -> None:
         self._agents = agents
 
+        self.generate_message_voice = to_streamed_response_wrapper(
+            agents.generate_message_voice,
+        )
         self.get_messages = to_streamed_response_wrapper(
             agents.get_messages,
         )
@@ -199,6 +298,9 @@ class AsyncAgentsResourceWithStreamingResponse:
     def __init__(self, agents: AsyncAgentsResource) -> None:
         self._agents = agents
 
+        self.generate_message_voice = async_to_streamed_response_wrapper(
+            agents.generate_message_voice,
+        )
         self.get_messages = async_to_streamed_response_wrapper(
             agents.get_messages,
         )
