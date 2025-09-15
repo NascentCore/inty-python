@@ -8,10 +8,6 @@ __all__ = ["AgentRecommendParams"]
 
 
 class AgentRecommendParams(TypedDict, total=False):
-    count: int
-
-    index: int
-
     page: int
     """Page number, starting from 1"""
 
@@ -20,3 +16,6 @@ class AgentRecommendParams(TypedDict, total=False):
 
     sort: Literal["created_asc", "created_desc", "random"]
     """Sort order: created_asc, created_desc, random"""
+
+    sort_seed: str
+    """sort seed [not yet used]"""
