@@ -239,13 +239,15 @@ Methods:
 Types:
 
 ```python
-from inty.types.api.v1.chats import ChatSettings
+from inty.types.api.v1.chats import ChatSettings, AgentUpdateSettingsResponse
 ```
 
 Methods:
 
 - <code title="post /api/v1/chats/agents/{agent_id}/messages/{message_id}/voice">client.api.v1.chats.agents.<a href="./src/inty/resources/api/v1/chats/agents.py">generate_message_voice</a>(message_id, \*, agent_id, \*\*<a href="src/inty/types/api/v1/chats/agent_generate_message_voice_params.py">params</a>) -> object</code>
 - <code title="get /api/v1/chats/agents/{agent_id}/messages">client.api.v1.chats.agents.<a href="./src/inty/resources/api/v1/chats/agents.py">get_messages</a>(agent_id, \*\*<a href="src/inty/types/api/v1/chats/agent_get_messages_params.py">params</a>) -> object</code>
+- <code title="get /api/v1/chats/agents/{agent_id}/settings">client.api.v1.chats.agents.<a href="./src/inty/resources/api/v1/chats/agents.py">get_settings</a>(agent_id) -> <a href="./src/inty/types/api/v1/chats/chat_settings.py">ChatSettings</a></code>
+- <code title="put /api/v1/chats/agents/{agent_id}/settings">client.api.v1.chats.agents.<a href="./src/inty/resources/api/v1/chats/agents.py">update_settings</a>(agent_id, \*\*<a href="src/inty/types/api/v1/chats/agent_update_settings_params.py">params</a>) -> <a href="./src/inty/types/api/v1/chats/agent_update_settings_response.py">AgentUpdateSettingsResponse</a></code>
 
 ### TextToSpeech
 
