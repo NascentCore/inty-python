@@ -459,6 +459,8 @@ class AgentsResource(SyncAPIResource):
     def recommend(
         self,
         *,
+        count: int | NotGiven = NOT_GIVEN,
+        index: int | NotGiven = NOT_GIVEN,
         page: int | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         sort: Literal["created_asc", "created_desc", "random"] | NotGiven = NOT_GIVEN,
@@ -502,6 +504,8 @@ class AgentsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "count": count,
+                        "index": index,
                         "page": page,
                         "page_size": page_size,
                         "sort": sort,
@@ -1017,6 +1021,8 @@ class AsyncAgentsResource(AsyncAPIResource):
     async def recommend(
         self,
         *,
+        count: int | NotGiven = NOT_GIVEN,
+        index: int | NotGiven = NOT_GIVEN,
         page: int | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         sort: Literal["created_asc", "created_desc", "random"] | NotGiven = NOT_GIVEN,
@@ -1060,6 +1066,8 @@ class AsyncAgentsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "count": count,
+                        "index": index,
                         "page": page,
                         "page_size": page_size,
                         "sort": sort,

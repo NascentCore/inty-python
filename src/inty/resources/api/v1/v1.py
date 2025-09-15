@@ -73,6 +73,14 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ....types.api import v1_upload_image_params, v1_list_notifications_params
+from .text_to_speech import (
+    TextToSpeechResource,
+    AsyncTextToSpeechResource,
+    TextToSpeechResourceWithRawResponse,
+    AsyncTextToSpeechResourceWithRawResponse,
+    TextToSpeechResourceWithStreamingResponse,
+    AsyncTextToSpeechResourceWithStreamingResponse,
+)
 from ...._base_client import make_request_options
 from .subscription.subscription import (
     SubscriptionResource,
@@ -120,6 +128,10 @@ class V1Resource(SyncAPIResource):
     @cached_property
     def chats(self) -> ChatsResource:
         return ChatsResource(self._client)
+
+    @cached_property
+    def text_to_speech(self) -> TextToSpeechResource:
+        return TextToSpeechResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> V1ResourceWithRawResponse:
@@ -264,6 +276,10 @@ class AsyncV1Resource(AsyncAPIResource):
     @cached_property
     def chats(self) -> AsyncChatsResource:
         return AsyncChatsResource(self._client)
+
+    @cached_property
+    def text_to_speech(self) -> AsyncTextToSpeechResource:
+        return AsyncTextToSpeechResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncV1ResourceWithRawResponse:
@@ -419,6 +435,10 @@ class V1ResourceWithRawResponse:
     def chats(self) -> ChatsResourceWithRawResponse:
         return ChatsResourceWithRawResponse(self._v1.chats)
 
+    @cached_property
+    def text_to_speech(self) -> TextToSpeechResourceWithRawResponse:
+        return TextToSpeechResourceWithRawResponse(self._v1.text_to_speech)
+
 
 class AsyncV1ResourceWithRawResponse:
     def __init__(self, v1: AsyncV1Resource) -> None:
@@ -462,6 +482,10 @@ class AsyncV1ResourceWithRawResponse:
     @cached_property
     def chats(self) -> AsyncChatsResourceWithRawResponse:
         return AsyncChatsResourceWithRawResponse(self._v1.chats)
+
+    @cached_property
+    def text_to_speech(self) -> AsyncTextToSpeechResourceWithRawResponse:
+        return AsyncTextToSpeechResourceWithRawResponse(self._v1.text_to_speech)
 
 
 class V1ResourceWithStreamingResponse:
@@ -507,6 +531,10 @@ class V1ResourceWithStreamingResponse:
     def chats(self) -> ChatsResourceWithStreamingResponse:
         return ChatsResourceWithStreamingResponse(self._v1.chats)
 
+    @cached_property
+    def text_to_speech(self) -> TextToSpeechResourceWithStreamingResponse:
+        return TextToSpeechResourceWithStreamingResponse(self._v1.text_to_speech)
+
 
 class AsyncV1ResourceWithStreamingResponse:
     def __init__(self, v1: AsyncV1Resource) -> None:
@@ -550,3 +578,7 @@ class AsyncV1ResourceWithStreamingResponse:
     @cached_property
     def chats(self) -> AsyncChatsResourceWithStreamingResponse:
         return AsyncChatsResourceWithStreamingResponse(self._v1.chats)
+
+    @cached_property
+    def text_to_speech(self) -> AsyncTextToSpeechResourceWithStreamingResponse:
+        return AsyncTextToSpeechResourceWithStreamingResponse(self._v1.text_to_speech)

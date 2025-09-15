@@ -8,6 +8,10 @@ __all__ = ["AgentRecommendParams"]
 
 
 class AgentRecommendParams(TypedDict, total=False):
+    count: int
+
+    index: int
+
     page: int
     """Page number, starting from 1"""
 
