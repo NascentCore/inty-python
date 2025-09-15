@@ -459,11 +459,10 @@ class AgentsResource(SyncAPIResource):
     def recommend(
         self,
         *,
-        count: int | NotGiven = NOT_GIVEN,
-        index: int | NotGiven = NOT_GIVEN,
         page: int | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         sort: Literal["created_asc", "created_desc", "random"] | NotGiven = NOT_GIVEN,
+        sort_seed: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -472,13 +471,9 @@ class AgentsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> APIResponsePaginationDataAgent:
         """
-        Get recommended AI agents list (public and approved agents)
-
-        Sorting options:
-
-        - created_desc: Most recent first (default)
-        - created_asc: Oldest first
-        - random: Random order
+        Get recommended AI agents list (public and approved agents), sort_seed is
+        required when sort is random, which is used to ensure deterministic order for
+        the random sort option
 
         Args:
           page: Page number, starting from 1
@@ -486,6 +481,8 @@ class AgentsResource(SyncAPIResource):
           page_size: Items per page, maximum 100
 
           sort: Sort order: created_asc, created_desc, random
+
+          sort_seed: sort seed [not yet used]
 
           extra_headers: Send extra headers
 
@@ -504,11 +501,10 @@ class AgentsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "count": count,
-                        "index": index,
                         "page": page,
                         "page_size": page_size,
                         "sort": sort,
+                        "sort_seed": sort_seed,
                     },
                     agent_recommend_params.AgentRecommendParams,
                 ),
@@ -1021,11 +1017,10 @@ class AsyncAgentsResource(AsyncAPIResource):
     async def recommend(
         self,
         *,
-        count: int | NotGiven = NOT_GIVEN,
-        index: int | NotGiven = NOT_GIVEN,
         page: int | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         sort: Literal["created_asc", "created_desc", "random"] | NotGiven = NOT_GIVEN,
+        sort_seed: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1034,13 +1029,9 @@ class AsyncAgentsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> APIResponsePaginationDataAgent:
         """
-        Get recommended AI agents list (public and approved agents)
-
-        Sorting options:
-
-        - created_desc: Most recent first (default)
-        - created_asc: Oldest first
-        - random: Random order
+        Get recommended AI agents list (public and approved agents), sort_seed is
+        required when sort is random, which is used to ensure deterministic order for
+        the random sort option
 
         Args:
           page: Page number, starting from 1
@@ -1048,6 +1039,8 @@ class AsyncAgentsResource(AsyncAPIResource):
           page_size: Items per page, maximum 100
 
           sort: Sort order: created_asc, created_desc, random
+
+          sort_seed: sort seed [not yet used]
 
           extra_headers: Send extra headers
 
@@ -1066,11 +1059,10 @@ class AsyncAgentsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "count": count,
-                        "index": index,
                         "page": page,
                         "page_size": page_size,
                         "sort": sort,
+                        "sort_seed": sort_seed,
                     },
                     agent_recommend_params.AgentRecommendParams,
                 ),
