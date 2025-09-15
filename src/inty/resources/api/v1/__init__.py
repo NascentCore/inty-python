@@ -72,6 +72,14 @@ from .subscription import (
     SubscriptionResourceWithStreamingResponse,
     AsyncSubscriptionResourceWithStreamingResponse,
 )
+from .text_to_speech import (
+    TextToSpeechResource,
+    AsyncTextToSpeechResource,
+    TextToSpeechResourceWithRawResponse,
+    AsyncTextToSpeechResourceWithRawResponse,
+    TextToSpeechResourceWithStreamingResponse,
+    AsyncTextToSpeechResourceWithStreamingResponse,
+)
 
 __all__ = [
     "AuthResource",
@@ -122,6 +130,12 @@ __all__ = [
     "AsyncChatsResourceWithRawResponse",
     "ChatsResourceWithStreamingResponse",
     "AsyncChatsResourceWithStreamingResponse",
+    "TextToSpeechResource",
+    "AsyncTextToSpeechResource",
+    "TextToSpeechResourceWithRawResponse",
+    "AsyncTextToSpeechResourceWithRawResponse",
+    "TextToSpeechResourceWithStreamingResponse",
+    "AsyncTextToSpeechResourceWithStreamingResponse",
     "V1Resource",
     "AsyncV1Resource",
     "V1ResourceWithRawResponse",
