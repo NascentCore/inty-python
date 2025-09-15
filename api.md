@@ -257,5 +257,4 @@ from inty.types.api.v1 import TextToSpeechListVoicesResponse
 
 Methods:
 
-- <code title="post /api/v1/text-to-speech/messages/{message_id}">client.api.v1.text_to_speech.<a href="./src/inty/resources/api/v1/text_to_speech.py">generate_speech</a>(message_id) -> object</code>
 - <code title="get /api/v1/text-to-speech/list-voices">client.api.v1.text_to_speech.<a href="./src/inty/resources/api/v1/text_to_speech.py">list_voices</a>(\*\*<a href="src/inty/types/api/v1/text_to_speech_list_voices_params.py">params</a>) -> <a href="./src/inty/types/api/v1/text_to_speech_list_voices_response.py">TextToSpeechListVoicesResponse</a></code>

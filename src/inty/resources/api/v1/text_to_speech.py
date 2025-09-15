@@ -43,39 +43,6 @@ class TextToSpeechResource(SyncAPIResource):
         """
         return TextToSpeechResourceWithStreamingResponse(self)
 
-    def generate_speech(
-        self,
-        message_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
-        """
-        Generate voice for a message
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not message_id:
-            raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
-        return self._post(
-            f"/api/v1/text-to-speech/messages/{message_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=object,
-        )
-
     def list_voices(
         self,
         *,
@@ -151,39 +118,6 @@ class AsyncTextToSpeechResource(AsyncAPIResource):
         """
         return AsyncTextToSpeechResourceWithStreamingResponse(self)
 
-    async def generate_speech(
-        self,
-        message_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
-        """
-        Generate voice for a message
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not message_id:
-            raise ValueError(f"Expected a non-empty value for `message_id` but received {message_id!r}")
-        return await self._post(
-            f"/api/v1/text-to-speech/messages/{message_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=object,
-        )
-
     async def list_voices(
         self,
         *,
@@ -243,9 +177,6 @@ class TextToSpeechResourceWithRawResponse:
     def __init__(self, text_to_speech: TextToSpeechResource) -> None:
         self._text_to_speech = text_to_speech
 
-        self.generate_speech = to_raw_response_wrapper(
-            text_to_speech.generate_speech,
-        )
         self.list_voices = to_raw_response_wrapper(
             text_to_speech.list_voices,
         )
@@ -255,9 +186,6 @@ class AsyncTextToSpeechResourceWithRawResponse:
     def __init__(self, text_to_speech: AsyncTextToSpeechResource) -> None:
         self._text_to_speech = text_to_speech
 
-        self.generate_speech = async_to_raw_response_wrapper(
-            text_to_speech.generate_speech,
-        )
         self.list_voices = async_to_raw_response_wrapper(
             text_to_speech.list_voices,
         )
@@ -267,9 +195,6 @@ class TextToSpeechResourceWithStreamingResponse:
     def __init__(self, text_to_speech: TextToSpeechResource) -> None:
         self._text_to_speech = text_to_speech
 
-        self.generate_speech = to_streamed_response_wrapper(
-            text_to_speech.generate_speech,
-        )
         self.list_voices = to_streamed_response_wrapper(
             text_to_speech.list_voices,
         )
@@ -279,9 +204,6 @@ class AsyncTextToSpeechResourceWithStreamingResponse:
     def __init__(self, text_to_speech: AsyncTextToSpeechResource) -> None:
         self._text_to_speech = text_to_speech
 
-        self.generate_speech = async_to_streamed_response_wrapper(
-            text_to_speech.generate_speech,
-        )
         self.list_voices = async_to_streamed_response_wrapper(
             text_to_speech.list_voices,
         )
