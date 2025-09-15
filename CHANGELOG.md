@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.0 (2025-09-15)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/NascentCore/inty-python/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* Fix ([ce172fd](https://github.com/NascentCore/inty-python/commit/ce172fd739851f3de76bc19235c092f24386009f))
+* Remove config_path from stainless workflow ([b9e0eec](https://github.com/NascentCore/inty-python/commit/b9e0eec83dd1ed273d7733d0d5ee8db8a3b91dfe))
+
 ## 0.8.0 (2025-09-15)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/NascentCore/inty-python/compare/v0.7.0...v0.8.0)

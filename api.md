@@ -1,9 +1,3 @@
-# Inty
-
-Methods:
-
-- <code title="get /">client.<a href="./src/inty/_client.py">health_check</a>() -> object</code>
-
 # API
 
 ## V1

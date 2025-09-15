@@ -403,11 +403,10 @@ class TestAgents:
     @parametrize
     def test_method_recommend_with_all_params(self, client: Inty) -> None:
         agent = client.api.v1.ai.agents.recommend(
-            count=1,
-            index=1,
             page=1,
             page_size=1,
             sort="created_asc",
+            sort_seed="sort_seed",
         )
         assert_matches_type(APIResponsePaginationDataAgent, agent, path=["response"])
 
@@ -905,11 +904,10 @@ class TestAsyncAgents:
     @parametrize
     async def test_method_recommend_with_all_params(self, async_client: AsyncInty) -> None:
         agent = await async_client.api.v1.ai.agents.recommend(
-            count=1,
-            index=1,
             page=1,
             page_size=1,
             sort="created_asc",
+            sort_seed="sort_seed",
         )
         assert_matches_type(APIResponsePaginationDataAgent, agent, path=["response"])
 
