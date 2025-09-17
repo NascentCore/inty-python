@@ -54,12 +54,12 @@ Methods:
 Types:
 
 ```python
-from inty.types.api.v1.users import Gender, User
+from inty.types.api.v1.users import Gender, User, ProfileRetrieveResponse
 ```
 
 Methods:
 
-- <code title="get /api/v1/users/profile">client.api.v1.users.profile.<a href="./src/inty/resources/api/v1/users/profile.py">retrieve</a>() -> <a href="./src/inty/types/api/v1/users/user.py">User</a></code>
+- <code title="get /api/v1/users/profile">client.api.v1.users.profile.<a href="./src/inty/resources/api/v1/users/profile.py">retrieve</a>() -> <a href="./src/inty/types/api/v1/users/profile_retrieve_response.py">ProfileRetrieveResponse</a></code>
 - <code title="put /api/v1/users/profile">client.api.v1.users.profile.<a href="./src/inty/resources/api/v1/users/profile.py">update</a>(\*\*<a href="src/inty/types/api/v1/users/profile_update_params.py">params</a>) -> <a href="./src/inty/types/api/v1/users/user.py">User</a></code>
 
 #### Device

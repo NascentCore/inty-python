@@ -20,6 +20,7 @@ from ....._base_client import make_request_options
 from .....types.api.v1.users import Gender, profile_update_params
 from .....types.api.v1.users.user import User
 from .....types.api.v1.users.gender import Gender
+from .....types.api.v1.users.profile_retrieve_response import ProfileRetrieveResponse
 
 __all__ = ["ProfileResource", "AsyncProfileResource"]
 
@@ -53,14 +54,14 @@ class ProfileResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> User:
+    ) -> ProfileRetrieveResponse:
         """Get current user profile."""
         return self._get(
             "/api/v1/users/profile",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=User,
+            cast_to=ProfileRetrieveResponse,
         )
 
     def update(
@@ -146,14 +147,14 @@ class AsyncProfileResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> User:
+    ) -> ProfileRetrieveResponse:
         """Get current user profile."""
         return await self._get(
             "/api/v1/users/profile",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=User,
+            cast_to=ProfileRetrieveResponse,
         )
 
     async def update(
