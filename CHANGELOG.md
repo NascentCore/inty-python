@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.1 (2025-09-17)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/NascentCore/inty-python/compare/v0.9.0...v0.9.1)
+
+### Chores
+
+* **internal:** update pydantic dependency ([294d42e](https://github.com/NascentCore/inty-python/commit/294d42e67226152c2622abde9892aa57289022a6))
+
 ## 0.9.0 (2025-09-15)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/NascentCore/inty-python/compare/v0.8.0...v0.9.0)
