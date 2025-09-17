@@ -9,7 +9,7 @@ import pytest
 
 from inty import Inty, AsyncInty
 from tests.utils import assert_matches_type
-from inty.types.api.v1.users import User, ProfileRetrieveResponse
+from inty.types.api.v1.users import ProfileUpdateResponse, ProfileRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -49,7 +49,7 @@ class TestProfile:
     @parametrize
     def test_method_update(self, client: Inty) -> None:
         profile = client.api.v1.users.profile.update()
-        assert_matches_type(User, profile, path=["response"])
+        assert_matches_type(ProfileUpdateResponse, profile, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -64,7 +64,7 @@ class TestProfile:
             phone="phone",
             system_language="system_language",
         )
-        assert_matches_type(User, profile, path=["response"])
+        assert_matches_type(ProfileUpdateResponse, profile, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -74,7 +74,7 @@ class TestProfile:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         profile = response.parse()
-        assert_matches_type(User, profile, path=["response"])
+        assert_matches_type(ProfileUpdateResponse, profile, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -84,7 +84,7 @@ class TestProfile:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             profile = response.parse()
-            assert_matches_type(User, profile, path=["response"])
+            assert_matches_type(ProfileUpdateResponse, profile, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -126,7 +126,7 @@ class TestAsyncProfile:
     @parametrize
     async def test_method_update(self, async_client: AsyncInty) -> None:
         profile = await async_client.api.v1.users.profile.update()
-        assert_matches_type(User, profile, path=["response"])
+        assert_matches_type(ProfileUpdateResponse, profile, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -141,7 +141,7 @@ class TestAsyncProfile:
             phone="phone",
             system_language="system_language",
         )
-        assert_matches_type(User, profile, path=["response"])
+        assert_matches_type(ProfileUpdateResponse, profile, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -151,7 +151,7 @@ class TestAsyncProfile:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         profile = await response.parse()
-        assert_matches_type(User, profile, path=["response"])
+        assert_matches_type(ProfileUpdateResponse, profile, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -161,6 +161,6 @@ class TestAsyncProfile:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             profile = await response.parse()
-            assert_matches_type(User, profile, path=["response"])
+            assert_matches_type(ProfileUpdateResponse, profile, path=["response"])
 
         assert cast(Any, response.is_closed) is True
