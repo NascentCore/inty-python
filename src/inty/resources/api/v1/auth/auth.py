@@ -14,7 +14,7 @@ from .google import (
     GoogleResourceWithStreamingResponse,
     AsyncGoogleResourceWithStreamingResponse,
 )
-from ....._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ....._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
@@ -58,15 +58,15 @@ class AuthResource(SyncAPIResource):
     def create_guest(
         self,
         *,
-        age_group: Optional[str] | NotGiven = NOT_GIVEN,
-        device_id: Optional[str] | NotGiven = NOT_GIVEN,
-        system_language: Optional[str] | NotGiven = NOT_GIVEN,
+        age_group: Optional[str] | Omit = omit,
+        device_id: Optional[str] | Omit = omit,
+        system_language: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthCreateGuestResponse:
         """
         创建游客账号
@@ -124,15 +124,15 @@ class AsyncAuthResource(AsyncAPIResource):
     async def create_guest(
         self,
         *,
-        age_group: Optional[str] | NotGiven = NOT_GIVEN,
-        device_id: Optional[str] | NotGiven = NOT_GIVEN,
-        system_language: Optional[str] | NotGiven = NOT_GIVEN,
+        age_group: Optional[str] | Omit = omit,
+        device_id: Optional[str] | Omit = omit,
+        system_language: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthCreateGuestResponse:
         """
         创建游客账号

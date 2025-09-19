@@ -6,7 +6,7 @@ from typing import Optional
 
 import httpx
 
-from ....._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ....._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from .admin.admin import (
@@ -67,7 +67,7 @@ class SubscriptionResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseSubscriptionStatus:
         """获取用户订阅状态"""
         return self._get(
@@ -86,7 +86,7 @@ class SubscriptionResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseUsageStatistics:
         """获取用户使用统计"""
         return self._get(
@@ -105,7 +105,7 @@ class SubscriptionResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SubscriptionListPlansResponse:
         """现有订阅计划、用户订阅的内容、以及其他与用户订阅状态相关的信息"""
         return self._get(
@@ -121,13 +121,13 @@ class SubscriptionResource(SyncAPIResource):
         *,
         product_id: str,
         purchase_token: str,
-        order_id: Optional[str] | NotGiven = NOT_GIVEN,
+        order_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SubscriptionVerifyResponse:
         """
         Used by app to prove user has purchased a subscription
@@ -171,7 +171,7 @@ class SubscriptionResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SubscriptionWebhookResponse:
         """Google Play Developer Notifications webhook 处理订阅状态变化通知"""
         return self._post(
@@ -215,7 +215,7 @@ class AsyncSubscriptionResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseSubscriptionStatus:
         """获取用户订阅状态"""
         return await self._get(
@@ -234,7 +234,7 @@ class AsyncSubscriptionResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseUsageStatistics:
         """获取用户使用统计"""
         return await self._get(
@@ -253,7 +253,7 @@ class AsyncSubscriptionResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SubscriptionListPlansResponse:
         """现有订阅计划、用户订阅的内容、以及其他与用户订阅状态相关的信息"""
         return await self._get(
@@ -269,13 +269,13 @@ class AsyncSubscriptionResource(AsyncAPIResource):
         *,
         product_id: str,
         purchase_token: str,
-        order_id: Optional[str] | NotGiven = NOT_GIVEN,
+        order_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SubscriptionVerifyResponse:
         """
         Used by app to prove user has purchased a subscription
@@ -319,7 +319,7 @@ class AsyncSubscriptionResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SubscriptionWebhookResponse:
         """Google Play Developer Notifications webhook 处理订阅状态变化通知"""
         return await self._post(
