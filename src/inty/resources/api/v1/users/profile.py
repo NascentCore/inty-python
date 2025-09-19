@@ -6,7 +6,7 @@ from typing import Optional
 
 import httpx
 
-from ....._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ....._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
@@ -53,7 +53,7 @@ class ProfileResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProfileRetrieveResponse:
         """Get current user profile."""
         return self._get(
@@ -67,20 +67,20 @@ class ProfileResource(SyncAPIResource):
     def update(
         self,
         *,
-        age_group: Optional[str] | NotGiven = NOT_GIVEN,
-        avatar: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        email: Optional[str] | NotGiven = NOT_GIVEN,
-        gender: Optional[Gender] | NotGiven = NOT_GIVEN,
-        nickname: Optional[str] | NotGiven = NOT_GIVEN,
-        phone: Optional[str] | NotGiven = NOT_GIVEN,
-        system_language: Optional[str] | NotGiven = NOT_GIVEN,
+        age_group: Optional[str] | Omit = omit,
+        avatar: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        email: Optional[str] | Omit = omit,
+        gender: Optional[Gender] | Omit = omit,
+        nickname: Optional[str] | Omit = omit,
+        phone: Optional[str] | Omit = omit,
+        system_language: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProfileUpdateResponse:
         """
         Update current user profile.
@@ -146,7 +146,7 @@ class AsyncProfileResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProfileRetrieveResponse:
         """Get current user profile."""
         return await self._get(
@@ -160,20 +160,20 @@ class AsyncProfileResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        age_group: Optional[str] | NotGiven = NOT_GIVEN,
-        avatar: Optional[str] | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        email: Optional[str] | NotGiven = NOT_GIVEN,
-        gender: Optional[Gender] | NotGiven = NOT_GIVEN,
-        nickname: Optional[str] | NotGiven = NOT_GIVEN,
-        phone: Optional[str] | NotGiven = NOT_GIVEN,
-        system_language: Optional[str] | NotGiven = NOT_GIVEN,
+        age_group: Optional[str] | Omit = omit,
+        avatar: Optional[str] | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        email: Optional[str] | Omit = omit,
+        gender: Optional[Gender] | Omit = omit,
+        nickname: Optional[str] | Omit = omit,
+        phone: Optional[str] | Omit = omit,
+        system_language: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProfileUpdateResponse:
         """
         Update current user profile.

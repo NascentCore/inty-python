@@ -6,7 +6,7 @@ from typing import Any, Optional, cast
 
 import httpx
 
-from ....._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ....._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
@@ -53,13 +53,13 @@ class AgentsResource(SyncAPIResource):
         message_id: str,
         *,
         agent_id: str,
-        language: str | NotGiven = NOT_GIVEN,
+        language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Generate voice for a message
@@ -97,15 +97,15 @@ class AgentsResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        offset: int | NotGiven = NOT_GIVEN,
-        order: str | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        offset: int | Omit = omit,
+        order: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Get only chat message records by Agent ID (lighter interface)
@@ -155,7 +155,7 @@ class AgentsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatSettings:
         """
         [Deprecated, use /chats/{chat_id}/settings instead] Get chat settings by Agent
@@ -185,16 +185,16 @@ class AgentsResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        language: Optional[str] | NotGiven = NOT_GIVEN,
-        premium_mode: Optional[bool] | NotGiven = NOT_GIVEN,
-        style_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        voice_enabled: Optional[bool] | NotGiven = NOT_GIVEN,
+        language: Optional[str] | Omit = omit,
+        premium_mode: Optional[bool] | Omit = omit,
+        style_prompt: Optional[str] | Omit = omit,
+        voice_enabled: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentUpdateSettingsResponse:
         """
         We do not use chat_id to get settings, because we only support 1 chat per
@@ -259,13 +259,13 @@ class AsyncAgentsResource(AsyncAPIResource):
         message_id: str,
         *,
         agent_id: str,
-        language: str | NotGiven = NOT_GIVEN,
+        language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Generate voice for a message
@@ -303,15 +303,15 @@ class AsyncAgentsResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        offset: int | NotGiven = NOT_GIVEN,
-        order: str | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        offset: int | Omit = omit,
+        order: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Get only chat message records by Agent ID (lighter interface)
@@ -361,7 +361,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatSettings:
         """
         [Deprecated, use /chats/{chat_id}/settings instead] Get chat settings by Agent
@@ -391,16 +391,16 @@ class AsyncAgentsResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        language: Optional[str] | NotGiven = NOT_GIVEN,
-        premium_mode: Optional[bool] | NotGiven = NOT_GIVEN,
-        style_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        voice_enabled: Optional[bool] | NotGiven = NOT_GIVEN,
+        language: Optional[str] | Omit = omit,
+        premium_mode: Optional[bool] | Omit = omit,
+        style_prompt: Optional[str] | Omit = omit,
+        voice_enabled: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentUpdateSettingsResponse:
         """
         We do not use chat_id to get settings, because we only support 1 chat per
