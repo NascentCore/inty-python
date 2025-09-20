@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.11.1 (2025-09-20)
+
+Full Changelog: [v0.11.0...v0.11.1](https://github.com/NascentCore/inty-python/compare/v0.11.0...v0.11.1)
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([ced1905](https://github.com/NascentCore/inty-python/commit/ced190596b7263527d4148a70b3bee9cc28860e6))
+* **types:** change optional parameter type from NotGiven to Omit ([752d075](https://github.com/NascentCore/inty-python/commit/752d075591a1ef9fdfe13f64f769640ce7307d2f))
+
 ## 0.11.0 (2025-09-17)
 
 Full Changelog: [v0.10.0...v0.11.0](https://github.com/NascentCore/inty-python/compare/v0.10.0...v0.11.0)

@@ -6,7 +6,7 @@ from typing import Dict, Optional
 
 import httpx
 
-from ......_types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ......_types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ......_utils import maybe_transform, async_maybe_transform
 from ......_compat import cached_property
 from ......_resource import SyncAPIResource, AsyncAPIResource
@@ -52,21 +52,21 @@ class PlansResource(SyncAPIResource):
         name: str,
         plan_type: SubscriptionPlanType,
         price: float,
-        agent_creation_limit: int | NotGiven = NOT_GIVEN,
-        background_generation_limit_per_day: int | NotGiven = NOT_GIVEN,
-        chat_limit_per_day: int | NotGiven = NOT_GIVEN,
-        currency: str | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        discount_rate: float | NotGiven = NOT_GIVEN,
-        features: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        is_active: bool | NotGiven = NOT_GIVEN,
-        sort_order: int | NotGiven = NOT_GIVEN,
+        agent_creation_limit: int | Omit = omit,
+        background_generation_limit_per_day: int | Omit = omit,
+        chat_limit_per_day: int | Omit = omit,
+        currency: str | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        discount_rate: float | Omit = omit,
+        features: Optional[Dict[str, object]] | Omit = omit,
+        is_active: bool | Omit = omit,
+        sort_order: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanCreateResponse:
         """
         创建订阅计划（管理员接口）
@@ -135,13 +135,13 @@ class PlansResource(SyncAPIResource):
     def list(
         self,
         *,
-        include_inactive: bool | NotGiven = NOT_GIVEN,
+        include_inactive: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanListResponse:
         """
         获取所有订阅计划（管理员接口）
@@ -195,21 +195,21 @@ class AsyncPlansResource(AsyncAPIResource):
         name: str,
         plan_type: SubscriptionPlanType,
         price: float,
-        agent_creation_limit: int | NotGiven = NOT_GIVEN,
-        background_generation_limit_per_day: int | NotGiven = NOT_GIVEN,
-        chat_limit_per_day: int | NotGiven = NOT_GIVEN,
-        currency: str | NotGiven = NOT_GIVEN,
-        description: Optional[str] | NotGiven = NOT_GIVEN,
-        discount_rate: float | NotGiven = NOT_GIVEN,
-        features: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        is_active: bool | NotGiven = NOT_GIVEN,
-        sort_order: int | NotGiven = NOT_GIVEN,
+        agent_creation_limit: int | Omit = omit,
+        background_generation_limit_per_day: int | Omit = omit,
+        chat_limit_per_day: int | Omit = omit,
+        currency: str | Omit = omit,
+        description: Optional[str] | Omit = omit,
+        discount_rate: float | Omit = omit,
+        features: Optional[Dict[str, object]] | Omit = omit,
+        is_active: bool | Omit = omit,
+        sort_order: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanCreateResponse:
         """
         创建订阅计划（管理员接口）
@@ -278,13 +278,13 @@ class AsyncPlansResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        include_inactive: bool | NotGiven = NOT_GIVEN,
+        include_inactive: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanListResponse:
         """
         获取所有订阅计划（管理员接口）
