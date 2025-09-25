@@ -77,6 +77,7 @@ class AgentsResource(SyncAPIResource):
         llm_config: Optional[ModelConfigParam] | Omit = omit,
         main_prompt: Optional[str] | Omit = omit,
         message_example: Optional[str] | Omit = omit,
+        meta_data: Optional[agent_create_params.MetaData] | Omit = omit,
         mode_prompt: Optional[str] | Omit = omit,
         opening: Optional[str] | Omit = omit,
         opening_audio_url: Optional[str] | Omit = omit,
@@ -107,6 +108,8 @@ class AgentsResource(SyncAPIResource):
           main_prompt: 主提示词 - 作为第一个 system message，覆盖全局默认主提示词
 
           message_example: 对话示例
+
+          meta_data: Agent 元数据模型
 
           mode_prompt: 模式提示词 - 放在角色卡提示词后面，覆盖全局默认模式提示词
 
@@ -146,6 +149,7 @@ class AgentsResource(SyncAPIResource):
                     "llm_config": llm_config,
                     "main_prompt": main_prompt,
                     "message_example": message_example,
+                    "meta_data": meta_data,
                     "mode_prompt": mode_prompt,
                     "opening": opening,
                     "opening_audio_url": opening_audio_url,
@@ -220,6 +224,7 @@ class AgentsResource(SyncAPIResource):
         llm_config: Optional[ModelConfigParam] | Omit = omit,
         main_prompt: Optional[str] | Omit = omit,
         message_example: Optional[str] | Omit = omit,
+        meta_data: Optional[agent_update_params.MetaData] | Omit = omit,
         mode_prompt: Optional[str] | Omit = omit,
         name: Optional[str] | Omit = omit,
         opening: Optional[str] | Omit = omit,
@@ -241,10 +246,13 @@ class AgentsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Agent:
         """
-        Update AI agent
+        更新任何图片，都会将图片全部记录在 background_images 字段中，用于保存历史记录如
+        果没有提供 avatar，则会自动截取头像，并记录在 avatar 字段中
 
         Args:
           llm_config: AI 模型配置
+
+          meta_data: Agent 元数据模型
 
           prompt: 已废弃 - 请使用 personality 字段代替
 
@@ -279,6 +287,7 @@ class AgentsResource(SyncAPIResource):
                     "llm_config": llm_config,
                     "main_prompt": main_prompt,
                     "message_example": message_example,
+                    "meta_data": meta_data,
                     "mode_prompt": mode_prompt,
                     "name": name,
                     "opening": opening,
@@ -461,7 +470,7 @@ class AgentsResource(SyncAPIResource):
         *,
         page: int | Omit = omit,
         page_size: int | Omit = omit,
-        sort: Literal["created_asc", "created_desc", "random"] | Omit = omit,
+        sort: Literal["created_asc", "created_desc", "random", "score_based_random"] | Omit = omit,
         sort_seed: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -480,9 +489,9 @@ class AgentsResource(SyncAPIResource):
 
           page_size: Items per page, maximum 100
 
-          sort: Sort order: created_asc, created_desc, random
+          sort: Sort order: created_asc, created_desc, random, score_based_random
 
-          sort_seed: sort seed [not yet used]
+          sort_seed: Sort seed for deterministic random ordering
 
           extra_headers: Send extra headers
 
@@ -635,6 +644,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         llm_config: Optional[ModelConfigParam] | Omit = omit,
         main_prompt: Optional[str] | Omit = omit,
         message_example: Optional[str] | Omit = omit,
+        meta_data: Optional[agent_create_params.MetaData] | Omit = omit,
         mode_prompt: Optional[str] | Omit = omit,
         opening: Optional[str] | Omit = omit,
         opening_audio_url: Optional[str] | Omit = omit,
@@ -665,6 +675,8 @@ class AsyncAgentsResource(AsyncAPIResource):
           main_prompt: 主提示词 - 作为第一个 system message，覆盖全局默认主提示词
 
           message_example: 对话示例
+
+          meta_data: Agent 元数据模型
 
           mode_prompt: 模式提示词 - 放在角色卡提示词后面，覆盖全局默认模式提示词
 
@@ -704,6 +716,7 @@ class AsyncAgentsResource(AsyncAPIResource):
                     "llm_config": llm_config,
                     "main_prompt": main_prompt,
                     "message_example": message_example,
+                    "meta_data": meta_data,
                     "mode_prompt": mode_prompt,
                     "opening": opening,
                     "opening_audio_url": opening_audio_url,
@@ -778,6 +791,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         llm_config: Optional[ModelConfigParam] | Omit = omit,
         main_prompt: Optional[str] | Omit = omit,
         message_example: Optional[str] | Omit = omit,
+        meta_data: Optional[agent_update_params.MetaData] | Omit = omit,
         mode_prompt: Optional[str] | Omit = omit,
         name: Optional[str] | Omit = omit,
         opening: Optional[str] | Omit = omit,
@@ -799,10 +813,13 @@ class AsyncAgentsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Agent:
         """
-        Update AI agent
+        更新任何图片，都会将图片全部记录在 background_images 字段中，用于保存历史记录如
+        果没有提供 avatar，则会自动截取头像，并记录在 avatar 字段中
 
         Args:
           llm_config: AI 模型配置
+
+          meta_data: Agent 元数据模型
 
           prompt: 已废弃 - 请使用 personality 字段代替
 
@@ -837,6 +854,7 @@ class AsyncAgentsResource(AsyncAPIResource):
                     "llm_config": llm_config,
                     "main_prompt": main_prompt,
                     "message_example": message_example,
+                    "meta_data": meta_data,
                     "mode_prompt": mode_prompt,
                     "name": name,
                     "opening": opening,
@@ -1019,7 +1037,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         *,
         page: int | Omit = omit,
         page_size: int | Omit = omit,
-        sort: Literal["created_asc", "created_desc", "random"] | Omit = omit,
+        sort: Literal["created_asc", "created_desc", "random", "score_based_random"] | Omit = omit,
         sort_seed: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1038,9 +1056,9 @@ class AsyncAgentsResource(AsyncAPIResource):
 
           page_size: Items per page, maximum 100
 
-          sort: Sort order: created_asc, created_desc, random
+          sort: Sort order: created_asc, created_desc, random, score_based_random
 
-          sort_seed: sort seed [not yet used]
+          sort_seed: Sort seed for deterministic random ordering
 
           extra_headers: Send extra headers
 

@@ -14,8 +14,8 @@ class AgentRecommendParams(TypedDict, total=False):
     page_size: int
     """Items per page, maximum 100"""
 
-    sort: Literal["created_asc", "created_desc", "random"]
-    """Sort order: created_asc, created_desc, random"""
+    sort: Literal["created_asc", "created_desc", "random", "score_based_random"]
+    """Sort order: created_asc, created_desc, random, score_based_random"""
 
     sort_seed: str
-    """sort seed [not yet used]"""
+    """Sort seed for deterministic random ordering"""
