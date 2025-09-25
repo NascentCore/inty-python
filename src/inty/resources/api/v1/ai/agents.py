@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ....._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ....._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
@@ -63,38 +63,39 @@ class AgentsResource(SyncAPIResource):
         *,
         gender: str,
         name: str,
-        alternate_greetings: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        avatar: Optional[str] | NotGiven = NOT_GIVEN,
-        background: Optional[str] | NotGiven = NOT_GIVEN,
-        background_images: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        category: Optional[str] | NotGiven = NOT_GIVEN,
-        character_book: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        character_card_spec: Optional[str] | NotGiven = NOT_GIVEN,
-        character_version: Optional[str] | NotGiven = NOT_GIVEN,
-        creator_notes: Optional[str] | NotGiven = NOT_GIVEN,
-        extensions: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        intro: Optional[str] | NotGiven = NOT_GIVEN,
-        llm_config: Optional[ModelConfigParam] | NotGiven = NOT_GIVEN,
-        main_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        message_example: Optional[str] | NotGiven = NOT_GIVEN,
-        mode_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        opening: Optional[str] | NotGiven = NOT_GIVEN,
-        opening_audio_url: Optional[str] | NotGiven = NOT_GIVEN,
-        personality: Optional[str] | NotGiven = NOT_GIVEN,
-        photos: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        post_history_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        scenario: Optional[str] | NotGiven = NOT_GIVEN,
-        settings: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        tags: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        visibility: AgentVisibility | NotGiven = NOT_GIVEN,
-        voice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        alternate_greetings: Optional[SequenceNotStr[str]] | Omit = omit,
+        avatar: Optional[str] | Omit = omit,
+        background: Optional[str] | Omit = omit,
+        background_images: Optional[SequenceNotStr[str]] | Omit = omit,
+        category: Optional[str] | Omit = omit,
+        character_book: Optional[Dict[str, object]] | Omit = omit,
+        character_card_spec: Optional[str] | Omit = omit,
+        character_version: Optional[str] | Omit = omit,
+        creator_notes: Optional[str] | Omit = omit,
+        extensions: Optional[Dict[str, object]] | Omit = omit,
+        intro: Optional[str] | Omit = omit,
+        llm_config: Optional[ModelConfigParam] | Omit = omit,
+        main_prompt: Optional[str] | Omit = omit,
+        message_example: Optional[str] | Omit = omit,
+        meta_data: Optional[agent_create_params.MetaData] | Omit = omit,
+        mode_prompt: Optional[str] | Omit = omit,
+        opening: Optional[str] | Omit = omit,
+        opening_audio_url: Optional[str] | Omit = omit,
+        personality: Optional[str] | Omit = omit,
+        photos: Optional[SequenceNotStr[str]] | Omit = omit,
+        post_history_instructions: Optional[str] | Omit = omit,
+        prompt: Optional[str] | Omit = omit,
+        scenario: Optional[str] | Omit = omit,
+        settings: Optional[Dict[str, object]] | Omit = omit,
+        tags: Optional[SequenceNotStr[str]] | Omit = omit,
+        visibility: AgentVisibility | Omit = omit,
+        voice_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseAgent:
         """
         Create new AI agent, used by app and inty-eval
@@ -107,6 +108,8 @@ class AgentsResource(SyncAPIResource):
           main_prompt: 主提示词 - 作为第一个 system message，覆盖全局默认主提示词
 
           message_example: 对话示例
+
+          meta_data: Agent 元数据模型
 
           mode_prompt: 模式提示词 - 放在角色卡提示词后面，覆盖全局默认模式提示词
 
@@ -146,6 +149,7 @@ class AgentsResource(SyncAPIResource):
                     "llm_config": llm_config,
                     "main_prompt": main_prompt,
                     "message_example": message_example,
+                    "meta_data": meta_data,
                     "mode_prompt": mode_prompt,
                     "opening": opening,
                     "opening_audio_url": opening_audio_url,
@@ -176,7 +180,7 @@ class AgentsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Agent:
         """
         Get public agent by ID, include pre-generated agents and user-created public
@@ -205,46 +209,50 @@ class AgentsResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        alternate_greetings: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        avatar: Optional[str] | NotGiven = NOT_GIVEN,
-        background: Optional[str] | NotGiven = NOT_GIVEN,
-        background_images: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        category: Optional[str] | NotGiven = NOT_GIVEN,
-        character_book: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        character_card_spec: Optional[str] | NotGiven = NOT_GIVEN,
-        character_version: Optional[str] | NotGiven = NOT_GIVEN,
-        creator_notes: Optional[str] | NotGiven = NOT_GIVEN,
-        extensions: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        gender: Optional[str] | NotGiven = NOT_GIVEN,
-        intro: Optional[str] | NotGiven = NOT_GIVEN,
-        llm_config: Optional[ModelConfigParam] | NotGiven = NOT_GIVEN,
-        main_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        message_example: Optional[str] | NotGiven = NOT_GIVEN,
-        mode_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        name: Optional[str] | NotGiven = NOT_GIVEN,
-        opening: Optional[str] | NotGiven = NOT_GIVEN,
-        opening_audio_url: Optional[str] | NotGiven = NOT_GIVEN,
-        personality: Optional[str] | NotGiven = NOT_GIVEN,
-        photos: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        post_history_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        scenario: Optional[str] | NotGiven = NOT_GIVEN,
-        settings: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        tags: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        visibility: Optional[AgentVisibility] | NotGiven = NOT_GIVEN,
-        voice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        alternate_greetings: Optional[SequenceNotStr[str]] | Omit = omit,
+        avatar: Optional[str] | Omit = omit,
+        background: Optional[str] | Omit = omit,
+        background_images: Optional[SequenceNotStr[str]] | Omit = omit,
+        category: Optional[str] | Omit = omit,
+        character_book: Optional[Dict[str, object]] | Omit = omit,
+        character_card_spec: Optional[str] | Omit = omit,
+        character_version: Optional[str] | Omit = omit,
+        creator_notes: Optional[str] | Omit = omit,
+        extensions: Optional[Dict[str, object]] | Omit = omit,
+        gender: Optional[str] | Omit = omit,
+        intro: Optional[str] | Omit = omit,
+        llm_config: Optional[ModelConfigParam] | Omit = omit,
+        main_prompt: Optional[str] | Omit = omit,
+        message_example: Optional[str] | Omit = omit,
+        meta_data: Optional[agent_update_params.MetaData] | Omit = omit,
+        mode_prompt: Optional[str] | Omit = omit,
+        name: Optional[str] | Omit = omit,
+        opening: Optional[str] | Omit = omit,
+        opening_audio_url: Optional[str] | Omit = omit,
+        personality: Optional[str] | Omit = omit,
+        photos: Optional[SequenceNotStr[str]] | Omit = omit,
+        post_history_instructions: Optional[str] | Omit = omit,
+        prompt: Optional[str] | Omit = omit,
+        scenario: Optional[str] | Omit = omit,
+        settings: Optional[Dict[str, object]] | Omit = omit,
+        tags: Optional[SequenceNotStr[str]] | Omit = omit,
+        visibility: Optional[AgentVisibility] | Omit = omit,
+        voice_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Agent:
         """
-        Update AI agent
+        更新任何图片，都会将图片全部记录在 background_images 字段中，用于保存历史记录如
+        果没有提供 avatar，则会自动截取头像，并记录在 avatar 字段中
 
         Args:
           llm_config: AI 模型配置
+
+          meta_data: Agent 元数据模型
 
           prompt: 已废弃 - 请使用 personality 字段代替
 
@@ -279,6 +287,7 @@ class AgentsResource(SyncAPIResource):
                     "llm_config": llm_config,
                     "main_prompt": main_prompt,
                     "message_example": message_example,
+                    "meta_data": meta_data,
                     "mode_prompt": mode_prompt,
                     "name": name,
                     "opening": opening,
@@ -304,14 +313,14 @@ class AgentsResource(SyncAPIResource):
     def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        skip: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        skip: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListResponse:
         """
         This endpoint is used by an registered user to list their created AI characters
@@ -353,7 +362,7 @@ class AgentsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseAgent:
         """
         Delete AI agent
@@ -386,7 +395,7 @@ class AgentsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseDict:
         """
         Follow AI agent
@@ -413,14 +422,14 @@ class AgentsResource(SyncAPIResource):
     def following(
         self,
         *,
-        page: int | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        page: int | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponsePaginationDataAgent:
         """
         Get current user's followed AI agents list
@@ -459,16 +468,16 @@ class AgentsResource(SyncAPIResource):
     def recommend(
         self,
         *,
-        page: int | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        sort: Literal["created_asc", "created_desc", "random"] | NotGiven = NOT_GIVEN,
-        sort_seed: str | NotGiven = NOT_GIVEN,
+        page: int | Omit = omit,
+        page_size: int | Omit = omit,
+        sort: Literal["created_asc", "created_desc", "random", "score_based_random"] | Omit = omit,
+        sort_seed: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponsePaginationDataAgent:
         """
         Get recommended AI agents list (public and approved agents), sort_seed is
@@ -480,9 +489,9 @@ class AgentsResource(SyncAPIResource):
 
           page_size: Items per page, maximum 100
 
-          sort: Sort order: created_asc, created_desc, random
+          sort: Sort order: created_asc, created_desc, random, score_based_random
 
-          sort_seed: sort seed [not yet used]
+          sort_seed: Sort seed for deterministic random ordering
 
           extra_headers: Send extra headers
 
@@ -516,14 +525,14 @@ class AgentsResource(SyncAPIResource):
         self,
         *,
         q: str,
-        page: int | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        page: int | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponsePaginationDataAgent:
         """
         Search public AI agents Support fuzzy search by name, description, category
@@ -571,7 +580,7 @@ class AgentsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseDict:
         """
         Unfollow AI agent
@@ -621,38 +630,39 @@ class AsyncAgentsResource(AsyncAPIResource):
         *,
         gender: str,
         name: str,
-        alternate_greetings: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        avatar: Optional[str] | NotGiven = NOT_GIVEN,
-        background: Optional[str] | NotGiven = NOT_GIVEN,
-        background_images: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        category: Optional[str] | NotGiven = NOT_GIVEN,
-        character_book: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        character_card_spec: Optional[str] | NotGiven = NOT_GIVEN,
-        character_version: Optional[str] | NotGiven = NOT_GIVEN,
-        creator_notes: Optional[str] | NotGiven = NOT_GIVEN,
-        extensions: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        intro: Optional[str] | NotGiven = NOT_GIVEN,
-        llm_config: Optional[ModelConfigParam] | NotGiven = NOT_GIVEN,
-        main_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        message_example: Optional[str] | NotGiven = NOT_GIVEN,
-        mode_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        opening: Optional[str] | NotGiven = NOT_GIVEN,
-        opening_audio_url: Optional[str] | NotGiven = NOT_GIVEN,
-        personality: Optional[str] | NotGiven = NOT_GIVEN,
-        photos: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        post_history_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        scenario: Optional[str] | NotGiven = NOT_GIVEN,
-        settings: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        tags: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        visibility: AgentVisibility | NotGiven = NOT_GIVEN,
-        voice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        alternate_greetings: Optional[SequenceNotStr[str]] | Omit = omit,
+        avatar: Optional[str] | Omit = omit,
+        background: Optional[str] | Omit = omit,
+        background_images: Optional[SequenceNotStr[str]] | Omit = omit,
+        category: Optional[str] | Omit = omit,
+        character_book: Optional[Dict[str, object]] | Omit = omit,
+        character_card_spec: Optional[str] | Omit = omit,
+        character_version: Optional[str] | Omit = omit,
+        creator_notes: Optional[str] | Omit = omit,
+        extensions: Optional[Dict[str, object]] | Omit = omit,
+        intro: Optional[str] | Omit = omit,
+        llm_config: Optional[ModelConfigParam] | Omit = omit,
+        main_prompt: Optional[str] | Omit = omit,
+        message_example: Optional[str] | Omit = omit,
+        meta_data: Optional[agent_create_params.MetaData] | Omit = omit,
+        mode_prompt: Optional[str] | Omit = omit,
+        opening: Optional[str] | Omit = omit,
+        opening_audio_url: Optional[str] | Omit = omit,
+        personality: Optional[str] | Omit = omit,
+        photos: Optional[SequenceNotStr[str]] | Omit = omit,
+        post_history_instructions: Optional[str] | Omit = omit,
+        prompt: Optional[str] | Omit = omit,
+        scenario: Optional[str] | Omit = omit,
+        settings: Optional[Dict[str, object]] | Omit = omit,
+        tags: Optional[SequenceNotStr[str]] | Omit = omit,
+        visibility: AgentVisibility | Omit = omit,
+        voice_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseAgent:
         """
         Create new AI agent, used by app and inty-eval
@@ -665,6 +675,8 @@ class AsyncAgentsResource(AsyncAPIResource):
           main_prompt: 主提示词 - 作为第一个 system message，覆盖全局默认主提示词
 
           message_example: 对话示例
+
+          meta_data: Agent 元数据模型
 
           mode_prompt: 模式提示词 - 放在角色卡提示词后面，覆盖全局默认模式提示词
 
@@ -704,6 +716,7 @@ class AsyncAgentsResource(AsyncAPIResource):
                     "llm_config": llm_config,
                     "main_prompt": main_prompt,
                     "message_example": message_example,
+                    "meta_data": meta_data,
                     "mode_prompt": mode_prompt,
                     "opening": opening,
                     "opening_audio_url": opening_audio_url,
@@ -734,7 +747,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Agent:
         """
         Get public agent by ID, include pre-generated agents and user-created public
@@ -763,46 +776,50 @@ class AsyncAgentsResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        alternate_greetings: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        avatar: Optional[str] | NotGiven = NOT_GIVEN,
-        background: Optional[str] | NotGiven = NOT_GIVEN,
-        background_images: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        category: Optional[str] | NotGiven = NOT_GIVEN,
-        character_book: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        character_card_spec: Optional[str] | NotGiven = NOT_GIVEN,
-        character_version: Optional[str] | NotGiven = NOT_GIVEN,
-        creator_notes: Optional[str] | NotGiven = NOT_GIVEN,
-        extensions: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        gender: Optional[str] | NotGiven = NOT_GIVEN,
-        intro: Optional[str] | NotGiven = NOT_GIVEN,
-        llm_config: Optional[ModelConfigParam] | NotGiven = NOT_GIVEN,
-        main_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        message_example: Optional[str] | NotGiven = NOT_GIVEN,
-        mode_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        name: Optional[str] | NotGiven = NOT_GIVEN,
-        opening: Optional[str] | NotGiven = NOT_GIVEN,
-        opening_audio_url: Optional[str] | NotGiven = NOT_GIVEN,
-        personality: Optional[str] | NotGiven = NOT_GIVEN,
-        photos: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        post_history_instructions: Optional[str] | NotGiven = NOT_GIVEN,
-        prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        scenario: Optional[str] | NotGiven = NOT_GIVEN,
-        settings: Optional[Dict[str, object]] | NotGiven = NOT_GIVEN,
-        tags: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        visibility: Optional[AgentVisibility] | NotGiven = NOT_GIVEN,
-        voice_id: Optional[str] | NotGiven = NOT_GIVEN,
+        alternate_greetings: Optional[SequenceNotStr[str]] | Omit = omit,
+        avatar: Optional[str] | Omit = omit,
+        background: Optional[str] | Omit = omit,
+        background_images: Optional[SequenceNotStr[str]] | Omit = omit,
+        category: Optional[str] | Omit = omit,
+        character_book: Optional[Dict[str, object]] | Omit = omit,
+        character_card_spec: Optional[str] | Omit = omit,
+        character_version: Optional[str] | Omit = omit,
+        creator_notes: Optional[str] | Omit = omit,
+        extensions: Optional[Dict[str, object]] | Omit = omit,
+        gender: Optional[str] | Omit = omit,
+        intro: Optional[str] | Omit = omit,
+        llm_config: Optional[ModelConfigParam] | Omit = omit,
+        main_prompt: Optional[str] | Omit = omit,
+        message_example: Optional[str] | Omit = omit,
+        meta_data: Optional[agent_update_params.MetaData] | Omit = omit,
+        mode_prompt: Optional[str] | Omit = omit,
+        name: Optional[str] | Omit = omit,
+        opening: Optional[str] | Omit = omit,
+        opening_audio_url: Optional[str] | Omit = omit,
+        personality: Optional[str] | Omit = omit,
+        photos: Optional[SequenceNotStr[str]] | Omit = omit,
+        post_history_instructions: Optional[str] | Omit = omit,
+        prompt: Optional[str] | Omit = omit,
+        scenario: Optional[str] | Omit = omit,
+        settings: Optional[Dict[str, object]] | Omit = omit,
+        tags: Optional[SequenceNotStr[str]] | Omit = omit,
+        visibility: Optional[AgentVisibility] | Omit = omit,
+        voice_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Agent:
         """
-        Update AI agent
+        更新任何图片，都会将图片全部记录在 background_images 字段中，用于保存历史记录如
+        果没有提供 avatar，则会自动截取头像，并记录在 avatar 字段中
 
         Args:
           llm_config: AI 模型配置
+
+          meta_data: Agent 元数据模型
 
           prompt: 已废弃 - 请使用 personality 字段代替
 
@@ -837,6 +854,7 @@ class AsyncAgentsResource(AsyncAPIResource):
                     "llm_config": llm_config,
                     "main_prompt": main_prompt,
                     "message_example": message_example,
+                    "meta_data": meta_data,
                     "mode_prompt": mode_prompt,
                     "name": name,
                     "opening": opening,
@@ -862,14 +880,14 @@ class AsyncAgentsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        skip: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        skip: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListResponse:
         """
         This endpoint is used by an registered user to list their created AI characters
@@ -911,7 +929,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseAgent:
         """
         Delete AI agent
@@ -944,7 +962,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseDict:
         """
         Follow AI agent
@@ -971,14 +989,14 @@ class AsyncAgentsResource(AsyncAPIResource):
     async def following(
         self,
         *,
-        page: int | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        page: int | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponsePaginationDataAgent:
         """
         Get current user's followed AI agents list
@@ -1017,16 +1035,16 @@ class AsyncAgentsResource(AsyncAPIResource):
     async def recommend(
         self,
         *,
-        page: int | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        sort: Literal["created_asc", "created_desc", "random"] | NotGiven = NOT_GIVEN,
-        sort_seed: str | NotGiven = NOT_GIVEN,
+        page: int | Omit = omit,
+        page_size: int | Omit = omit,
+        sort: Literal["created_asc", "created_desc", "random", "score_based_random"] | Omit = omit,
+        sort_seed: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponsePaginationDataAgent:
         """
         Get recommended AI agents list (public and approved agents), sort_seed is
@@ -1038,9 +1056,9 @@ class AsyncAgentsResource(AsyncAPIResource):
 
           page_size: Items per page, maximum 100
 
-          sort: Sort order: created_asc, created_desc, random
+          sort: Sort order: created_asc, created_desc, random, score_based_random
 
-          sort_seed: sort seed [not yet used]
+          sort_seed: Sort seed for deterministic random ordering
 
           extra_headers: Send extra headers
 
@@ -1074,14 +1092,14 @@ class AsyncAgentsResource(AsyncAPIResource):
         self,
         *,
         q: str,
-        page: int | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        page: int | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponsePaginationDataAgent:
         """
         Search public AI agents Support fuzzy search by name, description, category
@@ -1129,7 +1147,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseDict:
         """
         Unfollow AI agent

@@ -9,7 +9,7 @@ from ....._types import SequenceNotStr
 from .agent_visibility import AgentVisibility
 from .model_config_param import ModelConfigParam
 
-__all__ = ["AgentCreateParams"]
+__all__ = ["AgentCreateParams", "MetaData"]
 
 
 class AgentCreateParams(TypedDict, total=False):
@@ -49,6 +49,9 @@ class AgentCreateParams(TypedDict, total=False):
     message_example: Optional[str]
     """对话示例"""
 
+    meta_data: Optional[MetaData]
+    """Agent 元数据模型"""
+
     mode_prompt: Optional[str]
     """模式提示词 - 放在角色卡提示词后面，覆盖全局默认模式提示词"""
 
@@ -77,3 +80,11 @@ class AgentCreateParams(TypedDict, total=False):
     """AI 角色可见性"""
 
     voice_id: Optional[str]
+
+
+class MetaData(TypedDict, total=False):
+    comment: Optional[str]
+    """Agent 备注信息"""
+
+    score: Optional[int]
+    """Agent 评分，1-5 的整数"""

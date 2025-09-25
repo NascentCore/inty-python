@@ -9,7 +9,7 @@ from ....._types import SequenceNotStr
 from .agent_visibility import AgentVisibility
 from .model_config_param import ModelConfigParam
 
-__all__ = ["AgentUpdateParams"]
+__all__ = ["AgentUpdateParams", "MetaData"]
 
 
 class AgentUpdateParams(TypedDict, total=False):
@@ -44,6 +44,9 @@ class AgentUpdateParams(TypedDict, total=False):
 
     message_example: Optional[str]
 
+    meta_data: Optional[MetaData]
+    """Agent 元数据模型"""
+
     mode_prompt: Optional[str]
 
     name: Optional[str]
@@ -71,3 +74,11 @@ class AgentUpdateParams(TypedDict, total=False):
     """AI 角色可见性"""
 
     voice_id: Optional[str]
+
+
+class MetaData(TypedDict, total=False):
+    comment: Optional[str]
+    """Agent 备注信息"""
+
+    score: Optional[int]
+    """Agent 评分，1-5 的整数"""

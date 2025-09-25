@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Iterable
 
 import httpx
@@ -14,7 +15,7 @@ from .agents import (
     AgentsResourceWithStreamingResponse,
     AsyncAgentsResourceWithStreamingResponse,
 )
-from ....._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ....._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
@@ -66,7 +67,7 @@ class ChatsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Chat:
         """
         Create new chat
@@ -92,14 +93,14 @@ class ChatsResource(SyncAPIResource):
     def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        skip: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        skip: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatListResponse:
         """
         Get current user's chat list
@@ -140,7 +141,7 @@ class ChatsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Chat:
         """
         Delete chat
@@ -169,15 +170,15 @@ class ChatsResource(SyncAPIResource):
         agent_id: str,
         *,
         messages: Iterable[chat_create_completion_params.Message],
-        language: str | NotGiven = NOT_GIVEN,
-        model: str | NotGiven = NOT_GIVEN,
-        stream: bool | NotGiven = NOT_GIVEN,
+        language: str | Omit = omit,
+        model: str | Omit = omit,
+        stream: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseDict:
         """
         基于 Agent ID 的 OpenAI 风格聊天接口如果用户还没有和该 Agent 创建会话，则自动创
@@ -209,6 +210,40 @@ class ChatsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=APIResponseDict,
+        )
+
+    @typing_extensions.deprecated("deprecated")
+    def retrieve_voice(
+        self,
+        voice_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> object:
+        """
+        Get voice info by voice_id
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not voice_id:
+            raise ValueError(f"Expected a non-empty value for `voice_id` but received {voice_id!r}")
+        return self._get(
+            f"/api/v1/chats/voices/{voice_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=object,
         )
 
 
@@ -245,7 +280,7 @@ class AsyncChatsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Chat:
         """
         Create new chat
@@ -271,14 +306,14 @@ class AsyncChatsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        skip: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        skip: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatListResponse:
         """
         Get current user's chat list
@@ -319,7 +354,7 @@ class AsyncChatsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Chat:
         """
         Delete chat
@@ -348,15 +383,15 @@ class AsyncChatsResource(AsyncAPIResource):
         agent_id: str,
         *,
         messages: Iterable[chat_create_completion_params.Message],
-        language: str | NotGiven = NOT_GIVEN,
-        model: str | NotGiven = NOT_GIVEN,
-        stream: bool | NotGiven = NOT_GIVEN,
+        language: str | Omit = omit,
+        model: str | Omit = omit,
+        stream: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseDict:
         """
         基于 Agent ID 的 OpenAI 风格聊天接口如果用户还没有和该 Agent 创建会话，则自动创
@@ -390,6 +425,40 @@ class AsyncChatsResource(AsyncAPIResource):
             cast_to=APIResponseDict,
         )
 
+    @typing_extensions.deprecated("deprecated")
+    async def retrieve_voice(
+        self,
+        voice_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> object:
+        """
+        Get voice info by voice_id
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not voice_id:
+            raise ValueError(f"Expected a non-empty value for `voice_id` but received {voice_id!r}")
+        return await self._get(
+            f"/api/v1/chats/voices/{voice_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=object,
+        )
+
 
 class ChatsResourceWithRawResponse:
     def __init__(self, chats: ChatsResource) -> None:
@@ -406,6 +475,11 @@ class ChatsResourceWithRawResponse:
         )
         self.create_completion = to_raw_response_wrapper(
             chats.create_completion,
+        )
+        self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                chats.retrieve_voice,  # pyright: ignore[reportDeprecated],
+            )
         )
 
     @cached_property
@@ -429,6 +503,11 @@ class AsyncChatsResourceWithRawResponse:
         self.create_completion = async_to_raw_response_wrapper(
             chats.create_completion,
         )
+        self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                chats.retrieve_voice,  # pyright: ignore[reportDeprecated],
+            )
+        )
 
     @cached_property
     def agents(self) -> AsyncAgentsResourceWithRawResponse:
@@ -451,6 +530,11 @@ class ChatsResourceWithStreamingResponse:
         self.create_completion = to_streamed_response_wrapper(
             chats.create_completion,
         )
+        self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                chats.retrieve_voice,  # pyright: ignore[reportDeprecated],
+            )
+        )
 
     @cached_property
     def agents(self) -> AgentsResourceWithStreamingResponse:
@@ -472,6 +556,11 @@ class AsyncChatsResourceWithStreamingResponse:
         )
         self.create_completion = async_to_streamed_response_wrapper(
             chats.create_completion,
+        )
+        self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                chats.retrieve_voice,  # pyright: ignore[reportDeprecated],
+            )
         )
 
     @cached_property
