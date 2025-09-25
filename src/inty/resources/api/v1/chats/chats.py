@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Iterable
 
 import httpx
@@ -211,6 +212,40 @@ class ChatsResource(SyncAPIResource):
             cast_to=APIResponseDict,
         )
 
+    @typing_extensions.deprecated("deprecated")
+    def retrieve_voice(
+        self,
+        voice_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> object:
+        """
+        Get voice info by voice_id
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not voice_id:
+            raise ValueError(f"Expected a non-empty value for `voice_id` but received {voice_id!r}")
+        return self._get(
+            f"/api/v1/chats/voices/{voice_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=object,
+        )
+
 
 class AsyncChatsResource(AsyncAPIResource):
     @cached_property
@@ -390,6 +425,40 @@ class AsyncChatsResource(AsyncAPIResource):
             cast_to=APIResponseDict,
         )
 
+    @typing_extensions.deprecated("deprecated")
+    async def retrieve_voice(
+        self,
+        voice_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> object:
+        """
+        Get voice info by voice_id
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not voice_id:
+            raise ValueError(f"Expected a non-empty value for `voice_id` but received {voice_id!r}")
+        return await self._get(
+            f"/api/v1/chats/voices/{voice_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=object,
+        )
+
 
 class ChatsResourceWithRawResponse:
     def __init__(self, chats: ChatsResource) -> None:
@@ -406,6 +475,11 @@ class ChatsResourceWithRawResponse:
         )
         self.create_completion = to_raw_response_wrapper(
             chats.create_completion,
+        )
+        self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                chats.retrieve_voice,  # pyright: ignore[reportDeprecated],
+            )
         )
 
     @cached_property
@@ -429,6 +503,11 @@ class AsyncChatsResourceWithRawResponse:
         self.create_completion = async_to_raw_response_wrapper(
             chats.create_completion,
         )
+        self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                chats.retrieve_voice,  # pyright: ignore[reportDeprecated],
+            )
+        )
 
     @cached_property
     def agents(self) -> AsyncAgentsResourceWithRawResponse:
@@ -451,6 +530,11 @@ class ChatsResourceWithStreamingResponse:
         self.create_completion = to_streamed_response_wrapper(
             chats.create_completion,
         )
+        self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                chats.retrieve_voice,  # pyright: ignore[reportDeprecated],
+            )
+        )
 
     @cached_property
     def agents(self) -> AgentsResourceWithStreamingResponse:
@@ -472,6 +556,11 @@ class AsyncChatsResourceWithStreamingResponse:
         )
         self.create_completion = async_to_streamed_response_wrapper(
             chats.create_completion,
+        )
+        self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                chats.retrieve_voice,  # pyright: ignore[reportDeprecated],
+            )
         )
 
     @cached_property

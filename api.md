@@ -227,6 +227,7 @@ Methods:
 - <code title="get /api/v1/chats/">client.api.v1.chats.<a href="./src/inty/resources/api/v1/chats/chats.py">list</a>(\*\*<a href="src/inty/types/api/v1/chat_list_params.py">params</a>) -> <a href="./src/inty/types/api/v1/chat_list_response.py">ChatListResponse</a></code>
 - <code title="delete /api/v1/chats/{chat_id}">client.api.v1.chats.<a href="./src/inty/resources/api/v1/chats/chats.py">delete</a>(chat_id) -> <a href="./src/inty/types/api/v1/chat.py">Chat</a></code>
 - <code title="post /api/v1/chat/completions/{agent_id}">client.api.v1.chats.<a href="./src/inty/resources/api/v1/chats/chats.py">create_completion</a>(agent_id, \*\*<a href="src/inty/types/api/v1/chat_create_completion_params.py">params</a>) -> <a href="./src/inty/types/api/v1/api_response_dict.py">APIResponseDict</a></code>
+- <code title="get /api/v1/chats/voices/{voice_id}">client.api.v1.chats.<a href="./src/inty/resources/api/v1/chats/chats.py">retrieve_voice</a>(voice_id) -> object</code>
 
 #### Agents
 

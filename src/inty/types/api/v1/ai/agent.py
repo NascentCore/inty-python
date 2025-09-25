@@ -8,7 +8,15 @@ from ..users.user import User
 from .model_config import ModelConfig
 from .agent_visibility import AgentVisibility
 
-__all__ = ["Agent"]
+__all__ = ["Agent", "MetaData"]
+
+
+class MetaData(BaseModel):
+    comment: Optional[str] = None
+    """Agent 备注信息"""
+
+    score: Optional[int] = None
+    """Agent 评分，1-5 的整数"""
 
 
 class Agent(BaseModel):
@@ -69,6 +77,9 @@ class Agent(BaseModel):
 
     message_example: Optional[str] = None
     """对话示例"""
+
+    meta_data: Optional[MetaData] = None
+    """Agent 元数据模型"""
 
     mode_prompt: Optional[str] = None
     """模式提示词 - 放在角色卡提示词后面，覆盖全局默认模式提示词"""
