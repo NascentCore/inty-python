@@ -8,7 +8,19 @@ from ..users.user import User
 from .model_config import ModelConfig
 from .agent_visibility import AgentVisibility
 
-__all__ = ["Agent", "MetaData"]
+__all__ = ["Agent", "AvatarSize", "BackgroundSize", "MetaData"]
+
+
+class AvatarSize(BaseModel):
+    height: int
+
+    width: int
+
+
+class BackgroundSize(BaseModel):
+    height: int
+
+    width: int
 
 
 class MetaData(BaseModel):
@@ -37,9 +49,15 @@ class Agent(BaseModel):
 
     avatar: Optional[str] = None
 
+    avatar_size: Optional[AvatarSize] = None
+    """Image size"""
+
     background: Optional[str] = None
 
     background_images: Optional[List[str]] = None
+
+    background_size: Optional[BackgroundSize] = None
+    """Image size"""
 
     category: Optional[str] = None
 

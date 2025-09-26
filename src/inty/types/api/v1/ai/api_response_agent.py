@@ -12,6 +12,6 @@ class APIResponseAgent(BaseModel):
     code: Optional[int] = None
 
     data: Optional[Agent] = None
-    """AI 角色"""
+    """AI 角色，在 sqlalchemy 模型基础上添加额外多表查询来的数据"""
 
     message: Optional[str] = None
