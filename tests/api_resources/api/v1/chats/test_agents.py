@@ -192,6 +192,7 @@ class TestAgents:
             agent_id="agent_id",
             language="language",
             premium_mode=True,
+            request_id="request_id",
             style_prompt="style_prompt",
             voice_enabled=True,
         )
@@ -409,6 +410,7 @@ class TestAsyncAgents:
             agent_id="agent_id",
             language="language",
             premium_mode=True,
+            request_id="request_id",
             style_prompt="style_prompt",
             voice_enabled=True,
         )

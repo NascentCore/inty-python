@@ -60,6 +60,7 @@ class PlansResource(SyncAPIResource):
         discount_rate: float | Omit = omit,
         features: Optional[Dict[str, object]] | Omit = omit,
         is_active: bool | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         sort_order: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -122,6 +123,7 @@ class PlansResource(SyncAPIResource):
                     "discount_rate": discount_rate,
                     "features": features,
                     "is_active": is_active,
+                    "request_id": request_id,
                     "sort_order": sort_order,
                 },
                 plan_create_params.PlanCreateParams,
@@ -203,6 +205,7 @@ class AsyncPlansResource(AsyncAPIResource):
         discount_rate: float | Omit = omit,
         features: Optional[Dict[str, object]] | Omit = omit,
         is_active: bool | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         sort_order: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -265,6 +268,7 @@ class AsyncPlansResource(AsyncAPIResource):
                     "discount_rate": discount_rate,
                     "features": features,
                     "is_active": is_active,
+                    "request_id": request_id,
                     "sort_order": sort_order,
                 },
                 plan_create_params.PlanCreateParams,

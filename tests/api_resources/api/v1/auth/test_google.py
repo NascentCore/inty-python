@@ -30,6 +30,7 @@ class TestGoogle:
     def test_method_login_with_all_params(self, client: Inty) -> None:
         google = client.api.v1.auth.google.login(
             id_token="id_token",
+            request_id="request_id",
             user_info={
                 "age_group": "age_group",
                 "gender": "MALE",
@@ -83,6 +84,7 @@ class TestAsyncGoogle:
     async def test_method_login_with_all_params(self, async_client: AsyncInty) -> None:
         google = await async_client.api.v1.auth.google.login(
             id_token="id_token",
+            request_id="request_id",
             user_info={
                 "age_group": "age_group",
                 "gender": "MALE",

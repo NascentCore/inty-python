@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import typing_extensions
-from typing import Iterable
+from typing import Iterable, Optional
 
 import httpx
 
@@ -62,6 +62,7 @@ class ChatsResource(SyncAPIResource):
         self,
         *,
         agent_id: str,
+        request_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -83,7 +84,13 @@ class ChatsResource(SyncAPIResource):
         """
         return self._post(
             "/api/v1/chats/",
-            body=maybe_transform({"agent_id": agent_id}, chat_create_params.ChatCreateParams),
+            body=maybe_transform(
+                {
+                    "agent_id": agent_id,
+                    "request_id": request_id,
+                },
+                chat_create_params.ChatCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -172,6 +179,7 @@ class ChatsResource(SyncAPIResource):
         messages: Iterable[chat_create_completion_params.Message],
         language: str | Omit = omit,
         model: str | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         stream: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -202,6 +210,7 @@ class ChatsResource(SyncAPIResource):
                     "messages": messages,
                     "language": language,
                     "model": model,
+                    "request_id": request_id,
                     "stream": stream,
                 },
                 chat_create_completion_params.ChatCreateCompletionParams,
@@ -275,6 +284,7 @@ class AsyncChatsResource(AsyncAPIResource):
         self,
         *,
         agent_id: str,
+        request_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -296,7 +306,13 @@ class AsyncChatsResource(AsyncAPIResource):
         """
         return await self._post(
             "/api/v1/chats/",
-            body=await async_maybe_transform({"agent_id": agent_id}, chat_create_params.ChatCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "agent_id": agent_id,
+                    "request_id": request_id,
+                },
+                chat_create_params.ChatCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -385,6 +401,7 @@ class AsyncChatsResource(AsyncAPIResource):
         messages: Iterable[chat_create_completion_params.Message],
         language: str | Omit = omit,
         model: str | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         stream: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -415,6 +432,7 @@ class AsyncChatsResource(AsyncAPIResource):
                     "messages": messages,
                     "language": language,
                     "model": model,
+                    "request_id": request_id,
                     "stream": stream,
                 },
                 chat_create_completion_params.ChatCreateCompletionParams,

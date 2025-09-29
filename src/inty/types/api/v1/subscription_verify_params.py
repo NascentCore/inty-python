@@ -17,3 +17,5 @@ class SubscriptionVerifyParams(TypedDict, total=False):
 
     order_id: Optional[str]
     """订单 ID"""
+
+    request_id: Optional[str]

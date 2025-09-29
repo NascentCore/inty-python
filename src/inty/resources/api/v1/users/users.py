@@ -83,6 +83,7 @@ class UsersResource(SyncAPIResource):
         self,
         *,
         reason: Optional[str] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -106,7 +107,13 @@ class UsersResource(SyncAPIResource):
         """
         return self._post(
             "/api/v1/users/delete-account",
-            body=maybe_transform({"reason": reason}, user_delete_account_params.UserDeleteAccountParams),
+            body=maybe_transform(
+                {
+                    "reason": reason,
+                    "request_id": request_id,
+                },
+                user_delete_account_params.UserDeleteAccountParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -150,6 +157,7 @@ class AsyncUsersResource(AsyncAPIResource):
         self,
         *,
         reason: Optional[str] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -173,7 +181,13 @@ class AsyncUsersResource(AsyncAPIResource):
         """
         return await self._post(
             "/api/v1/users/delete-account",
-            body=await async_maybe_transform({"reason": reason}, user_delete_account_params.UserDeleteAccountParams),
+            body=await async_maybe_transform(
+                {
+                    "reason": reason,
+                    "request_id": request_id,
+                },
+                user_delete_account_params.UserDeleteAccountParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

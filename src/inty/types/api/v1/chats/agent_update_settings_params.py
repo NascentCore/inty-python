@@ -13,6 +13,8 @@ class AgentUpdateSettingsParams(TypedDict, total=False):
 
     premium_mode: Optional[bool]
 
+    request_id: Optional[str]
+
     style_prompt: Optional[str]
 
     voice_enabled: Optional[bool]

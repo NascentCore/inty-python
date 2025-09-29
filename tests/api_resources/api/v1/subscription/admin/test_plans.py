@@ -47,6 +47,7 @@ class TestPlans:
             discount_rate=0,
             features={"foo": "bar"},
             is_active=True,
+            request_id="request_id",
             sort_order=0,
         )
         assert_matches_type(PlanCreateResponse, plan, path=["response"])
@@ -152,6 +153,7 @@ class TestAsyncPlans:
             discount_rate=0,
             features={"foo": "bar"},
             is_active=True,
+            request_id="request_id",
             sort_order=0,
         )
         assert_matches_type(PlanCreateResponse, plan, path=["response"])

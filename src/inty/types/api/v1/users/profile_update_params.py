@@ -26,4 +26,6 @@ class ProfileUpdateParams(TypedDict, total=False):
 
     phone: Optional[str]
 
+    request_id: Optional[str]
+
     system_language: Optional[str]

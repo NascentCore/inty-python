@@ -13,6 +13,8 @@ __all__ = ["GoogleLoginParams", "UserInfo"]
 class GoogleLoginParams(TypedDict, total=False):
     id_token: Required[str]
 
+    request_id: Optional[str]
+
     user_info: Optional[UserInfo]
     """用户信息"""
 

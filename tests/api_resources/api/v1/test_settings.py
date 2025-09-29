@@ -56,6 +56,7 @@ class TestSettings:
     def test_method_update_with_all_params(self, client: Inty) -> None:
         setting = client.api.v1.settings.update(
             language="language",
+            request_id="request_id",
             voice_enabled=True,
         )
         assert_matches_type(Settings, setting, path=["response"])
@@ -127,6 +128,7 @@ class TestAsyncSettings:
     async def test_method_update_with_all_params(self, async_client: AsyncInty) -> None:
         setting = await async_client.api.v1.settings.update(
             language="language",
+            request_id="request_id",
             voice_enabled=True,
         )
         assert_matches_type(Settings, setting, path=["response"])
