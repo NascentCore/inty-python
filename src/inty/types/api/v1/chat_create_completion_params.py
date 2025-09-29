@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable
+from typing import Iterable, Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["ChatCreateCompletionParams", "Message"]
@@ -14,6 +14,8 @@ class ChatCreateCompletionParams(TypedDict, total=False):
     language: str
 
     model: str
+
+    request_id: Optional[str]
 
     stream: bool
 

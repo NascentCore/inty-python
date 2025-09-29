@@ -74,6 +74,7 @@ class ProfileResource(SyncAPIResource):
         gender: Optional[Gender] | Omit = omit,
         nickname: Optional[str] | Omit = omit,
         phone: Optional[str] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         system_language: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -107,6 +108,7 @@ class ProfileResource(SyncAPIResource):
                     "gender": gender,
                     "nickname": nickname,
                     "phone": phone,
+                    "request_id": request_id,
                     "system_language": system_language,
                 },
                 profile_update_params.ProfileUpdateParams,
@@ -167,6 +169,7 @@ class AsyncProfileResource(AsyncAPIResource):
         gender: Optional[Gender] | Omit = omit,
         nickname: Optional[str] | Omit = omit,
         phone: Optional[str] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         system_language: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -200,6 +203,7 @@ class AsyncProfileResource(AsyncAPIResource):
                     "gender": gender,
                     "nickname": nickname,
                     "phone": phone,
+                    "request_id": request_id,
                     "system_language": system_language,
                 },
                 profile_update_params.ProfileUpdateParams,

@@ -69,6 +69,8 @@ class AgentCreateParams(TypedDict, total=False):
     prompt: Optional[str]
     """已废弃 - 请使用 personality 字段代替"""
 
+    request_id: Optional[str]
+
     scenario: Optional[str]
     """背景设定 (推荐)"""
 
@@ -87,4 +89,4 @@ class MetaData(TypedDict, total=False):
     """Agent 备注信息"""
 
     score: Optional[int]
-    """Agent 评分，1-5 的整数"""
+    """Agent 评分"""

@@ -29,6 +29,7 @@ class TestAuth:
         auth = client.api.v1.auth.create_guest(
             age_group="age_group",
             device_id="device_id",
+            request_id="request_id",
             system_language="system_language",
         )
         assert_matches_type(AuthCreateGuestResponse, auth, path=["response"])
@@ -73,6 +74,7 @@ class TestAsyncAuth:
         auth = await async_client.api.v1.auth.create_guest(
             age_group="age_group",
             device_id="device_id",
+            request_id="request_id",
             system_language="system_language",
         )
         assert_matches_type(AuthCreateGuestResponse, auth, path=["response"])

@@ -33,6 +33,15 @@ class TestChats:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_create_with_all_params(self, client: Inty) -> None:
+        chat = client.api.v1.chats.create(
+            agent_id="agent_id",
+            request_id="request_id",
+        )
+        assert_matches_type(Chat, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_raw_response_create(self, client: Inty) -> None:
         response = client.api.v1.chats.with_raw_response.create(
             agent_id="agent_id",
@@ -163,6 +172,7 @@ class TestChats:
             ],
             language="language",
             model="model",
+            request_id="request_id",
             stream=True,
         )
         assert_matches_type(APIResponseDict, chat, path=["response"])
@@ -277,6 +287,15 @@ class TestAsyncChats:
     async def test_method_create(self, async_client: AsyncInty) -> None:
         chat = await async_client.api.v1.chats.create(
             agent_id="agent_id",
+        )
+        assert_matches_type(Chat, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncInty) -> None:
+        chat = await async_client.api.v1.chats.create(
+            agent_id="agent_id",
+            request_id="request_id",
         )
         assert_matches_type(Chat, chat, path=["response"])
 
@@ -412,6 +431,7 @@ class TestAsyncChats:
             ],
             language="language",
             model="model",
+            request_id="request_id",
             stream=True,
         )
         assert_matches_type(APIResponseDict, chat, path=["response"])

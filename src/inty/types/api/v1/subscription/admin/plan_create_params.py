@@ -47,5 +47,7 @@ class PlanCreateParams(TypedDict, total=False):
     is_active: bool
     """是否激活"""
 
+    request_id: Optional[str]
+
     sort_order: int
     """排序顺序"""

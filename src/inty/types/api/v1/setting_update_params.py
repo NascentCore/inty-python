@@ -11,4 +11,6 @@ __all__ = ["SettingUpdateParams"]
 class SettingUpdateParams(TypedDict, total=False):
     language: Optional[str]
 
+    request_id: Optional[str]
+
     voice_enabled: Optional[bool]

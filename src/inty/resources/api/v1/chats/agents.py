@@ -187,6 +187,7 @@ class AgentsResource(SyncAPIResource):
         *,
         language: Optional[str] | Omit = omit,
         premium_mode: Optional[bool] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         style_prompt: Optional[str] | Omit = omit,
         voice_enabled: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -219,6 +220,7 @@ class AgentsResource(SyncAPIResource):
                     {
                         "language": language,
                         "premium_mode": premium_mode,
+                        "request_id": request_id,
                         "style_prompt": style_prompt,
                         "voice_enabled": voice_enabled,
                     },
@@ -393,6 +395,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         *,
         language: Optional[str] | Omit = omit,
         premium_mode: Optional[bool] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         style_prompt: Optional[str] | Omit = omit,
         voice_enabled: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -425,6 +428,7 @@ class AsyncAgentsResource(AsyncAPIResource):
                     {
                         "language": language,
                         "premium_mode": premium_mode,
+                        "request_id": request_id,
                         "style_prompt": style_prompt,
                         "voice_enabled": voice_enabled,
                     },

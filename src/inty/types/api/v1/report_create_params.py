@@ -20,3 +20,5 @@ class ReportCreateParams(TypedDict, total=False):
     description: Optional[str]
 
     image_urls: Optional[SequenceNotStr[str]]
+
+    request_id: Optional[str]

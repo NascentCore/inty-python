@@ -28,6 +28,7 @@ class TestUsers:
     def test_method_delete_account_with_all_params(self, client: Inty) -> None:
         user = client.api.v1.users.delete_account(
             reason="隐私关注",
+            request_id="request_id",
         )
         assert_matches_type(UserDeleteAccountResponse, user, path=["response"])
 
@@ -70,6 +71,7 @@ class TestAsyncUsers:
     async def test_method_delete_account_with_all_params(self, async_client: AsyncInty) -> None:
         user = await async_client.api.v1.users.delete_account(
             reason="隐私关注",
+            request_id="request_id",
         )
         assert_matches_type(UserDeleteAccountResponse, user, path=["response"])
 

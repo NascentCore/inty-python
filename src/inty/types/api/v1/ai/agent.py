@@ -28,7 +28,7 @@ class MetaData(BaseModel):
     """Agent 备注信息"""
 
     score: Optional[int] = None
-    """Agent 评分，1-5 的整数"""
+    """Agent 评分"""
 
 
 class Agent(BaseModel):
@@ -124,6 +124,8 @@ class Agent(BaseModel):
     tags: Optional[List[str]] = None
 
     updated_at: Optional[int] = None
+
+    user: Optional[str] = None
 
     visibility: Optional[AgentVisibility] = None
     """AI 角色可见性"""

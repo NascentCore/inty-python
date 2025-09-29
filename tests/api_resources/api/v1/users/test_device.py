@@ -27,6 +27,15 @@ class TestDevice:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_register_with_all_params(self, client: Inty) -> None:
+        device = client.api.v1.users.device.register(
+            token="token",
+            request_id="request_id",
+        )
+        assert_matches_type(APIResponse, device, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_raw_response_register(self, client: Inty) -> None:
         response = client.api.v1.users.device.with_raw_response.register(
             token="token",
@@ -62,6 +71,15 @@ class TestAsyncDevice:
     async def test_method_register(self, async_client: AsyncInty) -> None:
         device = await async_client.api.v1.users.device.register(
             token="token",
+        )
+        assert_matches_type(APIResponse, device, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_register_with_all_params(self, async_client: AsyncInty) -> None:
+        device = await async_client.api.v1.users.device.register(
+            token="token",
+            request_id="request_id",
         )
         assert_matches_type(APIResponse, device, path=["response"])
 

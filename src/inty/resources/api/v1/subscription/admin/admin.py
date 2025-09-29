@@ -73,6 +73,7 @@ class AdminResource(SyncAPIResource):
         subscription_id: str,
         reason: str | Omit = omit,
         refund_amount: Optional[float] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -105,6 +106,7 @@ class AdminResource(SyncAPIResource):
                     "subscription_id": subscription_id,
                     "reason": reason,
                     "refund_amount": refund_amount,
+                    "request_id": request_id,
                 },
                 admin_process_refund_params.AdminProcessRefundParams,
             ),
@@ -149,6 +151,7 @@ class AsyncAdminResource(AsyncAPIResource):
         subscription_id: str,
         reason: str | Omit = omit,
         refund_amount: Optional[float] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -181,6 +184,7 @@ class AsyncAdminResource(AsyncAPIResource):
                     "subscription_id": subscription_id,
                     "reason": reason,
                     "refund_amount": refund_amount,
+                    "request_id": request_id,
                 },
                 admin_process_refund_params.AdminProcessRefundParams,
             ),

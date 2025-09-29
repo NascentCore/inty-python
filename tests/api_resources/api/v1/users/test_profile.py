@@ -62,6 +62,7 @@ class TestProfile:
             gender="MALE",
             nickname="nickname",
             phone="phone",
+            request_id="request_id",
             system_language="system_language",
         )
         assert_matches_type(ProfileUpdateResponse, profile, path=["response"])
@@ -139,6 +140,7 @@ class TestAsyncProfile:
             gender="MALE",
             nickname="nickname",
             phone="phone",
+            request_id="request_id",
             system_language="system_language",
         )
         assert_matches_type(ProfileUpdateResponse, profile, path=["response"])

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["DeviceRegisterParams"]
@@ -9,3 +10,5 @@ __all__ = ["DeviceRegisterParams"]
 
 class DeviceRegisterParams(TypedDict, total=False):
     token: Required[str]
+
+    request_id: Optional[str]
