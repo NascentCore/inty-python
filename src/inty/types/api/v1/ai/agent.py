@@ -6,9 +6,10 @@ from typing_extensions import Literal
 from ....._models import BaseModel
 from ..users.user import User
 from .model_config import ModelConfig
+from .agent_meta_data import AgentMetaData
 from .agent_visibility import AgentVisibility
 
-__all__ = ["Agent", "AvatarSize", "BackgroundSize", "MetaData"]
+__all__ = ["Agent", "AvatarSize", "BackgroundSize"]
 
 
 class AvatarSize(BaseModel):
@@ -21,14 +22,6 @@ class BackgroundSize(BaseModel):
     height: int
 
     width: int
-
-
-class MetaData(BaseModel):
-    comment: Optional[str] = None
-    """Agent 备注信息"""
-
-    score: Optional[int] = None
-    """Agent 评分"""
 
 
 class Agent(BaseModel):
@@ -96,7 +89,7 @@ class Agent(BaseModel):
     message_example: Optional[str] = None
     """对话示例"""
 
-    meta_data: Optional[MetaData] = None
+    meta_data: Optional[AgentMetaData] = None
     """Agent 元数据模型"""
 
     mode_prompt: Optional[str] = None
