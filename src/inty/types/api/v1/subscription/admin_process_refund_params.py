@@ -17,3 +17,5 @@ class AdminProcessRefundParams(TypedDict, total=False):
 
     refund_amount: Optional[float]
     """退款金额，不填写则退全款"""
+
+    request_id: Optional[str]

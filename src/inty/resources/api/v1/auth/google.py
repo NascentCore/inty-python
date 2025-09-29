@@ -47,6 +47,7 @@ class GoogleResource(SyncAPIResource):
         self,
         *,
         id_token: str,
+        request_id: Optional[str] | Omit = omit,
         user_info: Optional[google_login_params.UserInfo] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -74,6 +75,7 @@ class GoogleResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "id_token": id_token,
+                    "request_id": request_id,
                     "user_info": user_info,
                 },
                 google_login_params.GoogleLoginParams,
@@ -109,6 +111,7 @@ class AsyncGoogleResource(AsyncAPIResource):
         self,
         *,
         id_token: str,
+        request_id: Optional[str] | Omit = omit,
         user_info: Optional[google_login_params.UserInfo] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -136,6 +139,7 @@ class AsyncGoogleResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "id_token": id_token,
+                    "request_id": request_id,
                     "user_info": user_info,
                 },
                 google_login_params.GoogleLoginParams,

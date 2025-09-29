@@ -66,6 +66,7 @@ class SettingsResource(SyncAPIResource):
         self,
         *,
         language: Optional[str] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         voice_enabled: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -91,6 +92,7 @@ class SettingsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "language": language,
+                    "request_id": request_id,
                     "voice_enabled": voice_enabled,
                 },
                 setting_update_params.SettingUpdateParams,
@@ -145,6 +147,7 @@ class AsyncSettingsResource(AsyncAPIResource):
         self,
         *,
         language: Optional[str] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         voice_enabled: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -170,6 +173,7 @@ class AsyncSettingsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "language": language,
+                    "request_id": request_id,
                     "voice_enabled": voice_enabled,
                 },
                 setting_update_params.SettingUpdateParams,

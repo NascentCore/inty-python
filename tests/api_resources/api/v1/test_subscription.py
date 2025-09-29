@@ -123,6 +123,7 @@ class TestSubscription:
             product_id="product_id",
             purchase_token="purchase_token",
             order_id="order_id",
+            request_id="request_id",
         )
         assert_matches_type(SubscriptionVerifyResponse, subscription, path=["response"])
 
@@ -288,6 +289,7 @@ class TestAsyncSubscription:
             product_id="product_id",
             purchase_token="purchase_token",
             order_id="order_id",
+            request_id="request_id",
         )
         assert_matches_type(SubscriptionVerifyResponse, subscription, path=["response"])
 

@@ -52,6 +52,7 @@ class ReportResource(SyncAPIResource):
         target_type: Literal["USER", "AGENT"],
         description: Optional[str] | Omit = omit,
         image_urls: Optional[SequenceNotStr[str]] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -80,6 +81,7 @@ class ReportResource(SyncAPIResource):
                     "target_type": target_type,
                     "description": description,
                     "image_urls": image_urls,
+                    "request_id": request_id,
                 },
                 report_create_params.ReportCreateParams,
             ),
@@ -118,6 +120,7 @@ class AsyncReportResource(AsyncAPIResource):
         target_type: Literal["USER", "AGENT"],
         description: Optional[str] | Omit = omit,
         image_urls: Optional[SequenceNotStr[str]] | Omit = omit,
+        request_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -146,6 +149,7 @@ class AsyncReportResource(AsyncAPIResource):
                     "target_type": target_type,
                     "description": description,
                     "image_urls": image_urls,
+                    "request_id": request_id,
                 },
                 report_create_params.ReportCreateParams,
             ),

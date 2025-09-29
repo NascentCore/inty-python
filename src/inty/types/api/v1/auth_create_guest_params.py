@@ -13,4 +13,6 @@ class AuthCreateGuestParams(TypedDict, total=False):
 
     device_id: Optional[str]
 
+    request_id: Optional[str]
+
     system_language: Optional[str]

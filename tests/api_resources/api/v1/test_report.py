@@ -36,6 +36,7 @@ class TestReport:
             target_type="USER",
             description="description",
             image_urls=["string"],
+            request_id="request_id",
         )
         assert_matches_type(APIResponse, report, path=["response"])
 
@@ -94,6 +95,7 @@ class TestAsyncReport:
             target_type="USER",
             description="description",
             image_urls=["string"],
+            request_id="request_id",
         )
         assert_matches_type(APIResponse, report, path=["response"])
 

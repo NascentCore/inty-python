@@ -11,3 +11,5 @@ __all__ = ["UserDeleteAccountParams"]
 class UserDeleteAccountParams(TypedDict, total=False):
     reason: Optional[str]
     """删除原因"""
+
+    request_id: Optional[str]

@@ -32,6 +32,7 @@ class TestAdmin:
             subscription_id="subscription_id",
             reason="reason",
             refund_amount=0,
+            request_id="request_id",
         )
         assert_matches_type(AdminProcessRefundResponse, admin, path=["response"])
 
@@ -82,6 +83,7 @@ class TestAsyncAdmin:
             subscription_id="subscription_id",
             reason="reason",
             refund_amount=0,
+            request_id="request_id",
         )
         assert_matches_type(AdminProcessRefundResponse, admin, path=["response"])
 
