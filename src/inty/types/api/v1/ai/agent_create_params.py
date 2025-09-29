@@ -8,8 +8,9 @@ from typing_extensions import Required, TypedDict
 from ....._types import SequenceNotStr
 from .agent_visibility import AgentVisibility
 from .model_config_param import ModelConfigParam
+from .agent_meta_data_param import AgentMetaDataParam
 
-__all__ = ["AgentCreateParams", "MetaData"]
+__all__ = ["AgentCreateParams"]
 
 
 class AgentCreateParams(TypedDict, total=False):
@@ -49,7 +50,7 @@ class AgentCreateParams(TypedDict, total=False):
     message_example: Optional[str]
     """对话示例"""
 
-    meta_data: Optional[MetaData]
+    meta_data: Optional[AgentMetaDataParam]
     """Agent 元数据模型"""
 
     mode_prompt: Optional[str]
@@ -82,11 +83,3 @@ class AgentCreateParams(TypedDict, total=False):
     """AI 角色可见性"""
 
     voice_id: Optional[str]
-
-
-class MetaData(TypedDict, total=False):
-    comment: Optional[str]
-    """Agent 备注信息"""
-
-    score: Optional[int]
-    """Agent 评分"""

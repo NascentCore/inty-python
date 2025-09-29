@@ -107,6 +107,7 @@ Types:
 ```python
 from inty.types.api.v1.ai import (
     Agent,
+    AgentMetaData,
     AgentVisibility,
     APIResponseAgent,
     APIResponsePaginationDataAgent,
