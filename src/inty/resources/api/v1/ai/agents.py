@@ -33,6 +33,7 @@ from .....types.api.v1.ai.agent_visibility import AgentVisibility
 from .....types.api.v1.ai.api_response_agent import APIResponseAgent
 from .....types.api.v1.ai.model_config_param import ModelConfigParam
 from .....types.api.v1.ai.agent_list_response import AgentListResponse
+from .....types.api.v1.ai.agent_meta_data_param import AgentMetaDataParam
 from .....types.api.v1.ai.api_response_pagination_data_agent import APIResponsePaginationDataAgent
 
 __all__ = ["AgentsResource", "AsyncAgentsResource"]
@@ -77,7 +78,7 @@ class AgentsResource(SyncAPIResource):
         llm_config: Optional[ModelConfigParam] | Omit = omit,
         main_prompt: Optional[str] | Omit = omit,
         message_example: Optional[str] | Omit = omit,
-        meta_data: Optional[agent_create_params.MetaData] | Omit = omit,
+        meta_data: Optional[AgentMetaDataParam] | Omit = omit,
         mode_prompt: Optional[str] | Omit = omit,
         opening: Optional[str] | Omit = omit,
         opening_audio_url: Optional[str] | Omit = omit,
@@ -226,7 +227,7 @@ class AgentsResource(SyncAPIResource):
         llm_config: Optional[ModelConfigParam] | Omit = omit,
         main_prompt: Optional[str] | Omit = omit,
         message_example: Optional[str] | Omit = omit,
-        meta_data: Optional[agent_update_params.MetaData] | Omit = omit,
+        meta_data: Optional[AgentMetaDataParam] | Omit = omit,
         mode_prompt: Optional[str] | Omit = omit,
         name: Optional[str] | Omit = omit,
         opening: Optional[str] | Omit = omit,
@@ -648,7 +649,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         llm_config: Optional[ModelConfigParam] | Omit = omit,
         main_prompt: Optional[str] | Omit = omit,
         message_example: Optional[str] | Omit = omit,
-        meta_data: Optional[agent_create_params.MetaData] | Omit = omit,
+        meta_data: Optional[AgentMetaDataParam] | Omit = omit,
         mode_prompt: Optional[str] | Omit = omit,
         opening: Optional[str] | Omit = omit,
         opening_audio_url: Optional[str] | Omit = omit,
@@ -797,7 +798,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         llm_config: Optional[ModelConfigParam] | Omit = omit,
         main_prompt: Optional[str] | Omit = omit,
         message_example: Optional[str] | Omit = omit,
-        meta_data: Optional[agent_update_params.MetaData] | Omit = omit,
+        meta_data: Optional[AgentMetaDataParam] | Omit = omit,
         mode_prompt: Optional[str] | Omit = omit,
         name: Optional[str] | Omit = omit,
         opening: Optional[str] | Omit = omit,
