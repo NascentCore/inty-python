@@ -9,7 +9,11 @@ import pytest
 
 from inty import Inty, AsyncInty
 from tests.utils import assert_matches_type
-from inty.types.api.v1.users import ProfileUpdateResponse, ProfileRetrieveResponse
+from inty.types.api.v1.users import (
+    ProfileMeResponse,
+    ProfileUpdateResponse,
+    ProfileRetrieveResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -89,6 +93,34 @@ class TestProfile:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_me(self, client: Inty) -> None:
+        profile = client.api.v1.users.profile.me()
+        assert_matches_type(ProfileMeResponse, profile, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_me(self, client: Inty) -> None:
+        response = client.api.v1.users.profile.with_raw_response.me()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        profile = response.parse()
+        assert_matches_type(ProfileMeResponse, profile, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_me(self, client: Inty) -> None:
+        with client.api.v1.users.profile.with_streaming_response.me() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            profile = response.parse()
+            assert_matches_type(ProfileMeResponse, profile, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncProfile:
     parametrize = pytest.mark.parametrize(
@@ -164,5 +196,33 @@ class TestAsyncProfile:
 
             profile = await response.parse()
             assert_matches_type(ProfileUpdateResponse, profile, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_me(self, async_client: AsyncInty) -> None:
+        profile = await async_client.api.v1.users.profile.me()
+        assert_matches_type(ProfileMeResponse, profile, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_me(self, async_client: AsyncInty) -> None:
+        response = await async_client.api.v1.users.profile.with_raw_response.me()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        profile = await response.parse()
+        assert_matches_type(ProfileMeResponse, profile, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_me(self, async_client: AsyncInty) -> None:
+        async with async_client.api.v1.users.profile.with_streaming_response.me() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            profile = await response.parse()
+            assert_matches_type(ProfileMeResponse, profile, path=["response"])
 
         assert cast(Any, response.is_closed) is True
