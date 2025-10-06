@@ -19,6 +19,7 @@ from ....._response import (
 from ....._base_client import make_request_options
 from .....types.api.v1.users import Gender, profile_update_params
 from .....types.api.v1.users.gender import Gender
+from .....types.api.v1.users.profile_me_response import ProfileMeResponse
 from .....types.api.v1.users.profile_update_response import ProfileUpdateResponse
 from .....types.api.v1.users.profile_retrieve_response import ProfileRetrieveResponse
 
@@ -119,6 +120,25 @@ class ProfileResource(SyncAPIResource):
             cast_to=ProfileUpdateResponse,
         )
 
+    def me(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ProfileMeResponse:
+        """Get current user profile."""
+        return self._get(
+            "/api/v1/users/me",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ProfileMeResponse,
+        )
+
 
 class AsyncProfileResource(AsyncAPIResource):
     @cached_property
@@ -214,6 +234,25 @@ class AsyncProfileResource(AsyncAPIResource):
             cast_to=ProfileUpdateResponse,
         )
 
+    async def me(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ProfileMeResponse:
+        """Get current user profile."""
+        return await self._get(
+            "/api/v1/users/me",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ProfileMeResponse,
+        )
+
 
 class ProfileResourceWithRawResponse:
     def __init__(self, profile: ProfileResource) -> None:
@@ -224,6 +263,9 @@ class ProfileResourceWithRawResponse:
         )
         self.update = to_raw_response_wrapper(
             profile.update,
+        )
+        self.me = to_raw_response_wrapper(
+            profile.me,
         )
 
 
@@ -237,6 +279,9 @@ class AsyncProfileResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             profile.update,
         )
+        self.me = async_to_raw_response_wrapper(
+            profile.me,
+        )
 
 
 class ProfileResourceWithStreamingResponse:
@@ -249,6 +294,9 @@ class ProfileResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             profile.update,
         )
+        self.me = to_streamed_response_wrapper(
+            profile.me,
+        )
 
 
 class AsyncProfileResourceWithStreamingResponse:
@@ -260,4 +308,7 @@ class AsyncProfileResourceWithStreamingResponse:
         )
         self.update = async_to_streamed_response_wrapper(
             profile.update,
+        )
+        self.me = async_to_streamed_response_wrapper(
+            profile.me,
         )
