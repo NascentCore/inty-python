@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.17.0 (2025-10-13)
+
+Full Changelog: [v0.16.0...v0.17.0](https://github.com/NascentCore/inty-python/compare/v0.16.0...v0.17.0)
+
+### Features
+
+* **api:** manual updates ([e9e603a](https://github.com/NascentCore/inty-python/commit/e9e603a77a6bd98f27d94a59a012c3240d2d78fe))
+
+
+### Chores
+
+* **internal:** detect missing future annotations with ruff ([6a35994](https://github.com/NascentCore/inty-python/commit/6a35994551dc52493ee9ba465e4f0892750d376a))
+
 ## 0.16.0 (2025-10-06)
 
 Full Changelog: [v0.15.0...v0.16.0](https://github.com/NascentCore/inty-python/compare/v0.15.0...v0.16.0)

@@ -172,6 +172,7 @@ class ChatsResource(SyncAPIResource):
             cast_to=Chat,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def create_completion(
         self,
         agent_id: str,
@@ -189,8 +190,8 @@ class ChatsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseDict:
         """
-        基于 Agent ID 的 OpenAI 风格聊天接口如果用户还没有和该 Agent 创建会话，则自动创
-        建
+        可以处理包括图片在内的各种消息类型，媒体类型应该先上传，然后将 URL 作为索引发送
+        到此 API
 
         Args:
           extra_headers: Send extra headers
@@ -394,6 +395,7 @@ class AsyncChatsResource(AsyncAPIResource):
             cast_to=Chat,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def create_completion(
         self,
         agent_id: str,
@@ -411,8 +413,8 @@ class AsyncChatsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> APIResponseDict:
         """
-        基于 Agent ID 的 OpenAI 风格聊天接口如果用户还没有和该 Agent 创建会话，则自动创
-        建
+        可以处理包括图片在内的各种消息类型，媒体类型应该先上传，然后将 URL 作为索引发送
+        到此 API
 
         Args:
           extra_headers: Send extra headers
@@ -491,8 +493,10 @@ class ChatsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             chats.delete,
         )
-        self.create_completion = to_raw_response_wrapper(
-            chats.create_completion,
+        self.create_completion = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                chats.create_completion,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
             to_raw_response_wrapper(
@@ -518,8 +522,10 @@ class AsyncChatsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             chats.delete,
         )
-        self.create_completion = async_to_raw_response_wrapper(
-            chats.create_completion,
+        self.create_completion = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                chats.create_completion,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
             async_to_raw_response_wrapper(
@@ -545,8 +551,10 @@ class ChatsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             chats.delete,
         )
-        self.create_completion = to_streamed_response_wrapper(
-            chats.create_completion,
+        self.create_completion = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                chats.create_completion,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
             to_streamed_response_wrapper(
@@ -572,8 +580,10 @@ class AsyncChatsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             chats.delete,
         )
-        self.create_completion = async_to_streamed_response_wrapper(
-            chats.create_completion,
+        self.create_completion = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                chats.create_completion,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.retrieve_voice = (  # pyright: ignore[reportDeprecated]
             async_to_streamed_response_wrapper(
