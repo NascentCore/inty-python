@@ -148,47 +148,52 @@ class TestChats:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_completion(self, client: Inty) -> None:
-        chat = client.api.v1.chats.create_completion(
-            agent_id="agent_id",
-            messages=[
-                {
-                    "content": "content",
-                    "role": "role",
-                }
-            ],
-        )
+        with pytest.warns(DeprecationWarning):
+            chat = client.api.v1.chats.create_completion(
+                agent_id="agent_id",
+                messages=[
+                    {
+                        "content": "content",
+                        "role": "role",
+                    }
+                ],
+            )
+
         assert_matches_type(APIResponseDict, chat, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_completion_with_all_params(self, client: Inty) -> None:
-        chat = client.api.v1.chats.create_completion(
-            agent_id="agent_id",
-            messages=[
-                {
-                    "content": "content",
-                    "role": "role",
-                }
-            ],
-            language="language",
-            model="model",
-            request_id="request_id",
-            stream=True,
-        )
+        with pytest.warns(DeprecationWarning):
+            chat = client.api.v1.chats.create_completion(
+                agent_id="agent_id",
+                messages=[
+                    {
+                        "content": "content",
+                        "role": "role",
+                    }
+                ],
+                language="language",
+                model="model",
+                request_id="request_id",
+                stream=True,
+            )
+
         assert_matches_type(APIResponseDict, chat, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create_completion(self, client: Inty) -> None:
-        response = client.api.v1.chats.with_raw_response.create_completion(
-            agent_id="agent_id",
-            messages=[
-                {
-                    "content": "content",
-                    "role": "role",
-                }
-            ],
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.api.v1.chats.with_raw_response.create_completion(
+                agent_id="agent_id",
+                messages=[
+                    {
+                        "content": "content",
+                        "role": "role",
+                    }
+                ],
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -198,36 +203,38 @@ class TestChats:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create_completion(self, client: Inty) -> None:
-        with client.api.v1.chats.with_streaming_response.create_completion(
-            agent_id="agent_id",
-            messages=[
-                {
-                    "content": "content",
-                    "role": "role",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            chat = response.parse()
-            assert_matches_type(APIResponseDict, chat, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    def test_path_params_create_completion(self, client: Inty) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
-            client.api.v1.chats.with_raw_response.create_completion(
-                agent_id="",
+        with pytest.warns(DeprecationWarning):
+            with client.api.v1.chats.with_streaming_response.create_completion(
+                agent_id="agent_id",
                 messages=[
                     {
                         "content": "content",
                         "role": "role",
                     }
                 ],
-            )
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+                chat = response.parse()
+                assert_matches_type(APIResponseDict, chat, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_create_completion(self, client: Inty) -> None:
+        with pytest.warns(DeprecationWarning):
+            with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+                client.api.v1.chats.with_raw_response.create_completion(
+                    agent_id="",
+                    messages=[
+                        {
+                            "content": "content",
+                            "role": "role",
+                        }
+                    ],
+                )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -407,47 +414,52 @@ class TestAsyncChats:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_completion(self, async_client: AsyncInty) -> None:
-        chat = await async_client.api.v1.chats.create_completion(
-            agent_id="agent_id",
-            messages=[
-                {
-                    "content": "content",
-                    "role": "role",
-                }
-            ],
-        )
+        with pytest.warns(DeprecationWarning):
+            chat = await async_client.api.v1.chats.create_completion(
+                agent_id="agent_id",
+                messages=[
+                    {
+                        "content": "content",
+                        "role": "role",
+                    }
+                ],
+            )
+
         assert_matches_type(APIResponseDict, chat, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_completion_with_all_params(self, async_client: AsyncInty) -> None:
-        chat = await async_client.api.v1.chats.create_completion(
-            agent_id="agent_id",
-            messages=[
-                {
-                    "content": "content",
-                    "role": "role",
-                }
-            ],
-            language="language",
-            model="model",
-            request_id="request_id",
-            stream=True,
-        )
+        with pytest.warns(DeprecationWarning):
+            chat = await async_client.api.v1.chats.create_completion(
+                agent_id="agent_id",
+                messages=[
+                    {
+                        "content": "content",
+                        "role": "role",
+                    }
+                ],
+                language="language",
+                model="model",
+                request_id="request_id",
+                stream=True,
+            )
+
         assert_matches_type(APIResponseDict, chat, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create_completion(self, async_client: AsyncInty) -> None:
-        response = await async_client.api.v1.chats.with_raw_response.create_completion(
-            agent_id="agent_id",
-            messages=[
-                {
-                    "content": "content",
-                    "role": "role",
-                }
-            ],
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.api.v1.chats.with_raw_response.create_completion(
+                agent_id="agent_id",
+                messages=[
+                    {
+                        "content": "content",
+                        "role": "role",
+                    }
+                ],
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -457,36 +469,38 @@ class TestAsyncChats:
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create_completion(self, async_client: AsyncInty) -> None:
-        async with async_client.api.v1.chats.with_streaming_response.create_completion(
-            agent_id="agent_id",
-            messages=[
-                {
-                    "content": "content",
-                    "role": "role",
-                }
-            ],
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            chat = await response.parse()
-            assert_matches_type(APIResponseDict, chat, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Prism tests are disabled")
-    @parametrize
-    async def test_path_params_create_completion(self, async_client: AsyncInty) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
-            await async_client.api.v1.chats.with_raw_response.create_completion(
-                agent_id="",
+        with pytest.warns(DeprecationWarning):
+            async with async_client.api.v1.chats.with_streaming_response.create_completion(
+                agent_id="agent_id",
                 messages=[
                     {
                         "content": "content",
                         "role": "role",
                     }
                 ],
-            )
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+                chat = await response.parse()
+                assert_matches_type(APIResponseDict, chat, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_create_completion(self, async_client: AsyncInty) -> None:
+        with pytest.warns(DeprecationWarning):
+            with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+                await async_client.api.v1.chats.with_raw_response.create_completion(
+                    agent_id="",
+                    messages=[
+                        {
+                            "content": "content",
+                            "role": "role",
+                        }
+                    ],
+                )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
