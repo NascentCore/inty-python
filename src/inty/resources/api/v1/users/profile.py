@@ -21,7 +21,6 @@ from .....types.api.v1.users import Gender, profile_update_params
 from .....types.api.v1.users.gender import Gender
 from .....types.api.v1.users.profile_me_response import ProfileMeResponse
 from .....types.api.v1.users.profile_update_response import ProfileUpdateResponse
-from .....types.api.v1.users.profile_retrieve_response import ProfileRetrieveResponse
 
 __all__ = ["ProfileResource", "AsyncProfileResource"]
 
@@ -46,25 +45,6 @@ class ProfileResource(SyncAPIResource):
         """
         return ProfileResourceWithStreamingResponse(self)
 
-    def retrieve(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ProfileRetrieveResponse:
-        """Get current user profile."""
-        return self._get(
-            "/api/v1/users/profile",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ProfileRetrieveResponse,
-        )
-
     def update(
         self,
         *,
@@ -85,7 +65,7 @@ class ProfileResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProfileUpdateResponse:
         """
-        Update current user profile.
+        Update current user profile, support avatar update
 
         Args:
           gender: 性别
@@ -160,25 +140,6 @@ class AsyncProfileResource(AsyncAPIResource):
         """
         return AsyncProfileResourceWithStreamingResponse(self)
 
-    async def retrieve(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ProfileRetrieveResponse:
-        """Get current user profile."""
-        return await self._get(
-            "/api/v1/users/profile",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ProfileRetrieveResponse,
-        )
-
     async def update(
         self,
         *,
@@ -199,7 +160,7 @@ class AsyncProfileResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProfileUpdateResponse:
         """
-        Update current user profile.
+        Update current user profile, support avatar update
 
         Args:
           gender: 性别
@@ -258,9 +219,6 @@ class ProfileResourceWithRawResponse:
     def __init__(self, profile: ProfileResource) -> None:
         self._profile = profile
 
-        self.retrieve = to_raw_response_wrapper(
-            profile.retrieve,
-        )
         self.update = to_raw_response_wrapper(
             profile.update,
         )
@@ -273,9 +231,6 @@ class AsyncProfileResourceWithRawResponse:
     def __init__(self, profile: AsyncProfileResource) -> None:
         self._profile = profile
 
-        self.retrieve = async_to_raw_response_wrapper(
-            profile.retrieve,
-        )
         self.update = async_to_raw_response_wrapper(
             profile.update,
         )
@@ -288,9 +243,6 @@ class ProfileResourceWithStreamingResponse:
     def __init__(self, profile: ProfileResource) -> None:
         self._profile = profile
 
-        self.retrieve = to_streamed_response_wrapper(
-            profile.retrieve,
-        )
         self.update = to_streamed_response_wrapper(
             profile.update,
         )
@@ -303,9 +255,6 @@ class AsyncProfileResourceWithStreamingResponse:
     def __init__(self, profile: AsyncProfileResource) -> None:
         self._profile = profile
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            profile.retrieve,
-        )
         self.update = async_to_streamed_response_wrapper(
             profile.update,
         )

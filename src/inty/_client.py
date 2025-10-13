@@ -28,6 +28,7 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+from .resources.v2 import v2
 from .resources.api import api
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Inty", "AsyncInty", "Client", "AsyncClient"]
@@ -35,6 +36,7 @@ __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Inty", "As
 
 class Inty(SyncAPIClient):
     api: api.APIResource
+    v2: v2.V2Resource
     with_raw_response: IntyWithRawResponse
     with_streaming_response: IntyWithStreamedResponse
 
@@ -93,6 +95,7 @@ class Inty(SyncAPIClient):
         )
 
         self.api = api.APIResource(self)
+        self.v2 = v2.V2Resource(self)
         self.with_raw_response = IntyWithRawResponse(self)
         self.with_streaming_response = IntyWithStreamedResponse(self)
 
@@ -203,6 +206,7 @@ class Inty(SyncAPIClient):
 
 class AsyncInty(AsyncAPIClient):
     api: api.AsyncAPIResource
+    v2: v2.AsyncV2Resource
     with_raw_response: AsyncIntyWithRawResponse
     with_streaming_response: AsyncIntyWithStreamedResponse
 
@@ -261,6 +265,7 @@ class AsyncInty(AsyncAPIClient):
         )
 
         self.api = api.AsyncAPIResource(self)
+        self.v2 = v2.AsyncV2Resource(self)
         self.with_raw_response = AsyncIntyWithRawResponse(self)
         self.with_streaming_response = AsyncIntyWithStreamedResponse(self)
 
@@ -372,21 +377,25 @@ class AsyncInty(AsyncAPIClient):
 class IntyWithRawResponse:
     def __init__(self, client: Inty) -> None:
         self.api = api.APIResourceWithRawResponse(client.api)
+        self.v2 = v2.V2ResourceWithRawResponse(client.v2)
 
 
 class AsyncIntyWithRawResponse:
     def __init__(self, client: AsyncInty) -> None:
         self.api = api.AsyncAPIResourceWithRawResponse(client.api)
+        self.v2 = v2.AsyncV2ResourceWithRawResponse(client.v2)
 
 
 class IntyWithStreamedResponse:
     def __init__(self, client: Inty) -> None:
         self.api = api.APIResourceWithStreamingResponse(client.api)
+        self.v2 = v2.V2ResourceWithStreamingResponse(client.v2)
 
 
 class AsyncIntyWithStreamedResponse:
     def __init__(self, client: AsyncInty) -> None:
         self.api = api.AsyncAPIResourceWithStreamingResponse(client.api)
+        self.v2 = v2.AsyncV2ResourceWithStreamingResponse(client.v2)
 
 
 Client = Inty

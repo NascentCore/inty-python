@@ -54,18 +54,11 @@ Methods:
 Types:
 
 ```python
-from inty.types.api.v1.users import (
-    Gender,
-    User,
-    ProfileRetrieveResponse,
-    ProfileUpdateResponse,
-    ProfileMeResponse,
-)
+from inty.types.api.v1.users import Gender, User, ProfileUpdateResponse, ProfileMeResponse
 ```
 
 Methods:
 
-- <code title="get /api/v1/users/profile">client.api.v1.users.profile.<a href="./src/inty/resources/api/v1/users/profile.py">retrieve</a>() -> <a href="./src/inty/types/api/v1/users/profile_retrieve_response.py">ProfileRetrieveResponse</a></code>
 - <code title="put /api/v1/users/profile">client.api.v1.users.profile.<a href="./src/inty/resources/api/v1/users/profile.py">update</a>(\*\*<a href="src/inty/types/api/v1/users/profile_update_params.py">params</a>) -> <a href="./src/inty/types/api/v1/users/profile_update_response.py">ProfileUpdateResponse</a></code>
 - <code title="get /api/v1/users/me">client.api.v1.users.profile.<a href="./src/inty/resources/api/v1/users/profile.py">me</a>() -> <a href="./src/inty/types/api/v1/users/profile_me_response.py">ProfileMeResponse</a></code>
 
@@ -263,3 +256,17 @@ from inty.types.api.v1 import TextToSpeechListVoicesResponse
 Methods:
 
 - <code title="get /api/v1/text-to-speech/list-voices">client.api.v1.text_to_speech.<a href="./src/inty/resources/api/v1/text_to_speech.py">list_voices</a>(\*\*<a href="src/inty/types/api/v1/text_to_speech_list_voices_params.py">params</a>) -> <a href="./src/inty/types/api/v1/text_to_speech_list_voices_response.py">TextToSpeechListVoicesResponse</a></code>
+
+# V2
+
+## Chat
+
+Types:
+
+```python
+from inty.types.v2 import ChatSendMessageResponse
+```
+
+Methods:
+
+- <code title="post /api/v2/chat/completions/{agent_id}">client.v2.chat.<a href="./src/inty/resources/v2/chat.py">send_message</a>(agent_id, \*\*<a href="src/inty/types/v2/chat_send_message_params.py">params</a>) -> <a href="./src/inty/types/v2/chat_send_message_response.py">ChatSendMessageResponse</a></code>

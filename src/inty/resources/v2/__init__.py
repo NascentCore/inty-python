@@ -8,22 +8,22 @@ from .v2 import (
     V2ResourceWithStreamingResponse,
     AsyncV2ResourceWithStreamingResponse,
 )
-from .api import (
-    APIResource,
-    AsyncAPIResource,
-    APIResourceWithRawResponse,
-    AsyncAPIResourceWithRawResponse,
-    APIResourceWithStreamingResponse,
-    AsyncAPIResourceWithStreamingResponse,
+from .chat import (
+    ChatResource,
+    AsyncChatResource,
+    ChatResourceWithRawResponse,
+    AsyncChatResourceWithRawResponse,
+    ChatResourceWithStreamingResponse,
+    AsyncChatResourceWithStreamingResponse,
 )
 
 __all__ = [
-    "APIResource",
-    "AsyncAPIResource",
-    "APIResourceWithRawResponse",
-    "AsyncAPIResourceWithRawResponse",
-    "APIResourceWithStreamingResponse",
-    "AsyncAPIResourceWithStreamingResponse",
+    "ChatResource",
+    "AsyncChatResource",
+    "ChatResourceWithRawResponse",
+    "AsyncChatResourceWithRawResponse",
+    "ChatResourceWithStreamingResponse",
+    "AsyncChatResourceWithStreamingResponse",
     "V2Resource",
     "AsyncV2Resource",
     "V2ResourceWithRawResponse",

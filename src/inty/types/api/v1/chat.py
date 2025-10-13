@@ -20,6 +20,8 @@ class Chat(BaseModel):
 
     agent_avatar: Optional[str] = None
 
+    agent_background: Optional[str] = None
+
     agent_is_deleted: Optional[bool] = None
 
     agent_name: Optional[str] = None
