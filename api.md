@@ -62,18 +62,6 @@ Methods:
 - <code title="put /api/v1/users/profile">client.api.v1.users.profile.<a href="./src/inty/resources/api/v1/users/profile.py">update</a>(\*\*<a href="src/inty/types/api/v1/users/profile_update_params.py">params</a>) -> <a href="./src/inty/types/api/v1/users/profile_update_response.py">ProfileUpdateResponse</a></code>
 - <code title="get /api/v1/users/me">client.api.v1.users.profile.<a href="./src/inty/resources/api/v1/users/profile.py">me</a>() -> <a href="./src/inty/types/api/v1/users/profile_me_response.py">ProfileMeResponse</a></code>
 
-#### Device
-
-Types:
-
-```python
-from inty.types.api.v1.users import APIResponse
-```
-
-Methods:
-
-- <code title="post /api/v1/users/device/register">client.api.v1.users.device.<a href="./src/inty/resources/api/v1/users/device.py">register</a>(\*\*<a href="src/inty/types/api/v1/users/device_register_params.py">params</a>) -> <a href="./src/inty/types/api/v1/users/api_response.py">APIResponse</a></code>
-
 #### Deletion
 
 Types:
@@ -91,12 +79,12 @@ Methods:
 Types:
 
 ```python
-from inty.types.api.v1 import APIResponseDict
+from inty.types.api.v1 import APIResponseDict, ReportCreateResponse
 ```
 
 Methods:
 
-- <code title="post /api/v1/report/">client.api.v1.report.<a href="./src/inty/resources/api/v1/report.py">create</a>(\*\*<a href="src/inty/types/api/v1/report_create_params.py">params</a>) -> <a href="./src/inty/types/api/v1/users/api_response.py">APIResponse</a></code>
+- <code title="post /api/v1/report/">client.api.v1.report.<a href="./src/inty/resources/api/v1/report.py">create</a>(\*\*<a href="src/inty/types/api/v1/report_create_params.py">params</a>) -> <a href="./src/inty/types/api/v1/report_create_response.py">ReportCreateResponse</a></code>
 
 ### AI
 

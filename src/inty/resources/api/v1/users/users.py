@@ -6,14 +6,6 @@ from typing import Optional
 
 import httpx
 
-from .device import (
-    DeviceResource,
-    AsyncDeviceResource,
-    DeviceResourceWithRawResponse,
-    AsyncDeviceResourceWithRawResponse,
-    DeviceResourceWithStreamingResponse,
-    AsyncDeviceResourceWithStreamingResponse,
-)
 from .profile import (
     ProfileResource,
     AsyncProfileResource,
@@ -51,10 +43,6 @@ class UsersResource(SyncAPIResource):
     @cached_property
     def profile(self) -> ProfileResource:
         return ProfileResource(self._client)
-
-    @cached_property
-    def device(self) -> DeviceResource:
-        return DeviceResource(self._client)
 
     @cached_property
     def deletion(self) -> DeletionResource:
@@ -125,10 +113,6 @@ class AsyncUsersResource(AsyncAPIResource):
     @cached_property
     def profile(self) -> AsyncProfileResource:
         return AsyncProfileResource(self._client)
-
-    @cached_property
-    def device(self) -> AsyncDeviceResource:
-        return AsyncDeviceResource(self._client)
 
     @cached_property
     def deletion(self) -> AsyncDeletionResource:
@@ -208,10 +192,6 @@ class UsersResourceWithRawResponse:
         return ProfileResourceWithRawResponse(self._users.profile)
 
     @cached_property
-    def device(self) -> DeviceResourceWithRawResponse:
-        return DeviceResourceWithRawResponse(self._users.device)
-
-    @cached_property
     def deletion(self) -> DeletionResourceWithRawResponse:
         return DeletionResourceWithRawResponse(self._users.deletion)
 
@@ -227,10 +207,6 @@ class AsyncUsersResourceWithRawResponse:
     @cached_property
     def profile(self) -> AsyncProfileResourceWithRawResponse:
         return AsyncProfileResourceWithRawResponse(self._users.profile)
-
-    @cached_property
-    def device(self) -> AsyncDeviceResourceWithRawResponse:
-        return AsyncDeviceResourceWithRawResponse(self._users.device)
 
     @cached_property
     def deletion(self) -> AsyncDeletionResourceWithRawResponse:
@@ -250,10 +226,6 @@ class UsersResourceWithStreamingResponse:
         return ProfileResourceWithStreamingResponse(self._users.profile)
 
     @cached_property
-    def device(self) -> DeviceResourceWithStreamingResponse:
-        return DeviceResourceWithStreamingResponse(self._users.device)
-
-    @cached_property
     def deletion(self) -> DeletionResourceWithStreamingResponse:
         return DeletionResourceWithStreamingResponse(self._users.deletion)
 
@@ -269,10 +241,6 @@ class AsyncUsersResourceWithStreamingResponse:
     @cached_property
     def profile(self) -> AsyncProfileResourceWithStreamingResponse:
         return AsyncProfileResourceWithStreamingResponse(self._users.profile)
-
-    @cached_property
-    def device(self) -> AsyncDeviceResourceWithStreamingResponse:
-        return AsyncDeviceResourceWithStreamingResponse(self._users.device)
 
     @cached_property
     def deletion(self) -> AsyncDeletionResourceWithStreamingResponse:

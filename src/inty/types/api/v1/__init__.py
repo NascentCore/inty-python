@@ -11,6 +11,7 @@ from .chat_create_params import ChatCreateParams as ChatCreateParams
 from .chat_list_response import ChatListResponse as ChatListResponse
 from .report_create_params import ReportCreateParams as ReportCreateParams
 from .setting_update_params import SettingUpdateParams as SettingUpdateParams
+from .report_create_response import ReportCreateResponse as ReportCreateResponse
 from .version_check_response import VersionCheckResponse as VersionCheckResponse
 from .auth_create_guest_params import AuthCreateGuestParams as AuthCreateGuestParams
 from .auth_create_guest_response import AuthCreateGuestResponse as AuthCreateGuestResponse

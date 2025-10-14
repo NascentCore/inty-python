@@ -8,14 +8,6 @@ from .users import (
     UsersResourceWithStreamingResponse,
     AsyncUsersResourceWithStreamingResponse,
 )
-from .device import (
-    DeviceResource,
-    AsyncDeviceResource,
-    DeviceResourceWithRawResponse,
-    AsyncDeviceResourceWithRawResponse,
-    DeviceResourceWithStreamingResponse,
-    AsyncDeviceResourceWithStreamingResponse,
-)
 from .profile import (
     ProfileResource,
     AsyncProfileResource,
@@ -40,12 +32,6 @@ __all__ = [
     "AsyncProfileResourceWithRawResponse",
     "ProfileResourceWithStreamingResponse",
     "AsyncProfileResourceWithStreamingResponse",
-    "DeviceResource",
-    "AsyncDeviceResource",
-    "DeviceResourceWithRawResponse",
-    "AsyncDeviceResourceWithRawResponse",
-    "DeviceResourceWithStreamingResponse",
-    "AsyncDeviceResourceWithStreamingResponse",
     "DeletionResource",
     "AsyncDeletionResource",
     "DeletionResourceWithRawResponse",
