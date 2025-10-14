@@ -19,7 +19,7 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.api.v1 import report_create_params
-from ....types.api.v1.users.api_response import APIResponse
+from ....types.api.v1.report_create_response import ReportCreateResponse
 
 __all__ = ["ReportResource", "AsyncReportResource"]
 
@@ -59,7 +59,7 @@ class ReportResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> APIResponse:
+    ) -> ReportCreateResponse:
         """
         Submit report
 
@@ -88,7 +88,7 @@ class ReportResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=APIResponse,
+            cast_to=ReportCreateResponse,
         )
 
 
@@ -127,7 +127,7 @@ class AsyncReportResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> APIResponse:
+    ) -> ReportCreateResponse:
         """
         Submit report
 
@@ -156,7 +156,7 @@ class AsyncReportResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=APIResponse,
+            cast_to=ReportCreateResponse,
         )
 
 

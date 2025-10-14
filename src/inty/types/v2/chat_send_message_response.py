@@ -12,7 +12,7 @@ class DataChoiceMessage(BaseModel):
 
     role: str
 
-    id: Optional[str] = None
+    id: Optional[int] = None
 
     audio_url: Optional[str] = None
 

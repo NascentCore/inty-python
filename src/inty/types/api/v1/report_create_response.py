@@ -2,12 +2,12 @@
 
 from typing import Optional
 
-from ....._models import BaseModel
+from ...._models import BaseModel
 
-__all__ = ["APIResponse"]
+__all__ = ["ReportCreateResponse"]
 
 
-class APIResponse(BaseModel):
+class ReportCreateResponse(BaseModel):
     code: Optional[int] = None
 
     data: Optional[object] = None
