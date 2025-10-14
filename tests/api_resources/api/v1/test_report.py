@@ -9,7 +9,7 @@ import pytest
 
 from inty import Inty, AsyncInty
 from tests.utils import assert_matches_type
-from inty.types.api.v1.users import APIResponse
+from inty.types.api.v1 import ReportCreateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,7 +25,7 @@ class TestReport:
             target_id="target_id",
             target_type="USER",
         )
-        assert_matches_type(APIResponse, report, path=["response"])
+        assert_matches_type(ReportCreateResponse, report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -38,7 +38,7 @@ class TestReport:
             image_urls=["string"],
             request_id="request_id",
         )
-        assert_matches_type(APIResponse, report, path=["response"])
+        assert_matches_type(ReportCreateResponse, report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -52,7 +52,7 @@ class TestReport:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         report = response.parse()
-        assert_matches_type(APIResponse, report, path=["response"])
+        assert_matches_type(ReportCreateResponse, report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -66,7 +66,7 @@ class TestReport:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             report = response.parse()
-            assert_matches_type(APIResponse, report, path=["response"])
+            assert_matches_type(ReportCreateResponse, report, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -84,7 +84,7 @@ class TestAsyncReport:
             target_id="target_id",
             target_type="USER",
         )
-        assert_matches_type(APIResponse, report, path=["response"])
+        assert_matches_type(ReportCreateResponse, report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -97,7 +97,7 @@ class TestAsyncReport:
             image_urls=["string"],
             request_id="request_id",
         )
-        assert_matches_type(APIResponse, report, path=["response"])
+        assert_matches_type(ReportCreateResponse, report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -111,7 +111,7 @@ class TestAsyncReport:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         report = await response.parse()
-        assert_matches_type(APIResponse, report, path=["response"])
+        assert_matches_type(ReportCreateResponse, report, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -125,6 +125,6 @@ class TestAsyncReport:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             report = await response.parse()
-            assert_matches_type(APIResponse, report, path=["response"])
+            assert_matches_type(ReportCreateResponse, report, path=["response"])
 
         assert cast(Any, response.is_closed) is True

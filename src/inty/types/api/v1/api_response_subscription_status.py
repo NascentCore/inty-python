@@ -57,6 +57,12 @@ class Data(BaseModel):
     features: Optional[Dict[str, object]] = None
     """功能权益"""
 
+    guest_chat_24h_limit: Optional[int] = None
+    """24 小时内聊天次数限制（游客用户）"""
+
+    guest_voice_24h_limit: Optional[int] = None
+    """24 小时内语音生成次数限制（游客用户）"""
+
     has_ever_subscribed: Optional[bool] = None
     """是否曾经有过订阅记录"""
 
@@ -71,6 +77,9 @@ class Data(BaseModel):
 
     total_chat_limit: Optional[int] = None
     """总聊天次数限制（免费用户）"""
+
+    voice_24h_limit: Optional[int] = None
+    """24 小时内语音生成次数限制"""
 
     will_auto_renew: Optional[bool] = None
     """是否会自动续费"""
