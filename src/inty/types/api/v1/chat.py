@@ -22,9 +22,15 @@ class Chat(BaseModel):
 
     agent_background: Optional[str] = None
 
+    agent_intro: Optional[str] = None
+
     agent_is_deleted: Optional[bool] = None
 
     agent_name: Optional[str] = None
+
+    agent_opening: Optional[str] = None
+
+    agent_opening_audio_url: Optional[str] = None
 
     last_message: Optional[str] = None
 

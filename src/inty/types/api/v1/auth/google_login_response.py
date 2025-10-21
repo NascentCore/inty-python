@@ -25,6 +25,8 @@ class DataUser(BaseModel):
 
     age_group: Optional[str] = None
 
+    description: Optional[str] = None
+
     gender: Optional[Gender] = None
     """性别"""
 

@@ -100,13 +100,14 @@ from inty.types.api.v1.ai import (
     APIResponseAgent,
     APIResponsePaginationDataAgent,
     ModelConfig,
+    AgentCreateResponse,
     AgentListResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /api/v1/ai/agents">client.api.v1.ai.agents.<a href="./src/inty/resources/api/v1/ai/agents.py">create</a>(\*\*<a href="src/inty/types/api/v1/ai/agent_create_params.py">params</a>) -> <a href="./src/inty/types/api/v1/ai/api_response_agent.py">APIResponseAgent</a></code>
+- <code title="post /api/v1/ai/agents">client.api.v1.ai.agents.<a href="./src/inty/resources/api/v1/ai/agents.py">create</a>(\*\*<a href="src/inty/types/api/v1/ai/agent_create_params.py">params</a>) -> <a href="./src/inty/types/api/v1/ai/agent_create_response.py">AgentCreateResponse</a></code>
 - <code title="get /api/v1/ai/agents/{agent_id}">client.api.v1.ai.agents.<a href="./src/inty/resources/api/v1/ai/agents.py">retrieve</a>(agent_id) -> <a href="./src/inty/types/api/v1/ai/agent.py">Agent</a></code>
 - <code title="put /api/v1/ai/agents/{agent_id}">client.api.v1.ai.agents.<a href="./src/inty/resources/api/v1/ai/agents.py">update</a>(agent_id, \*\*<a href="src/inty/types/api/v1/ai/agent_update_params.py">params</a>) -> <a href="./src/inty/types/api/v1/ai/agent.py">Agent</a></code>
 - <code title="get /api/v1/ai/agents/me">client.api.v1.ai.agents.<a href="./src/inty/resources/api/v1/ai/agents.py">list</a>(\*\*<a href="src/inty/types/api/v1/ai/agent_list_params.py">params</a>) -> <a href="./src/inty/types/api/v1/ai/agent_list_response.py">AgentListResponse</a></code>

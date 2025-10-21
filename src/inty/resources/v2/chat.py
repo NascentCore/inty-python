@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Iterable, Optional
 
 import httpx
@@ -43,6 +44,7 @@ class ChatResource(SyncAPIResource):
         """
         return ChatResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     def send_message(
         self,
         agent_id: str,
@@ -113,6 +115,7 @@ class AsyncChatResource(AsyncAPIResource):
         """
         return AsyncChatResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     async def send_message(
         self,
         agent_id: str,
@@ -167,8 +170,10 @@ class ChatResourceWithRawResponse:
     def __init__(self, chat: ChatResource) -> None:
         self._chat = chat
 
-        self.send_message = to_raw_response_wrapper(
-            chat.send_message,
+        self.send_message = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                chat.send_message,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -176,8 +181,10 @@ class AsyncChatResourceWithRawResponse:
     def __init__(self, chat: AsyncChatResource) -> None:
         self._chat = chat
 
-        self.send_message = async_to_raw_response_wrapper(
-            chat.send_message,
+        self.send_message = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                chat.send_message,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -185,8 +192,10 @@ class ChatResourceWithStreamingResponse:
     def __init__(self, chat: ChatResource) -> None:
         self._chat = chat
 
-        self.send_message = to_streamed_response_wrapper(
-            chat.send_message,
+        self.send_message = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                chat.send_message,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -194,6 +203,8 @@ class AsyncChatResourceWithStreamingResponse:
     def __init__(self, chat: AsyncChatResource) -> None:
         self._chat = chat
 
-        self.send_message = async_to_streamed_response_wrapper(
-            chat.send_message,
+        self.send_message = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                chat.send_message,  # pyright: ignore[reportDeprecated],
+            )
         )

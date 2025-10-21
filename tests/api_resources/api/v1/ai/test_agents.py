@@ -14,6 +14,7 @@ from inty.types.api.v1.ai import (
     Agent,
     APIResponseAgent,
     AgentListResponse,
+    AgentCreateResponse,
     APIResponsePaginationDataAgent,
 )
 
@@ -30,7 +31,7 @@ class TestAgents:
             gender="gender",
             name="name",
         )
-        assert_matches_type(APIResponseAgent, agent, path=["response"])
+        assert_matches_type(AgentCreateResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -80,7 +81,7 @@ class TestAgents:
             visibility="PUBLIC",
             voice_id="voice_id",
         )
-        assert_matches_type(APIResponseAgent, agent, path=["response"])
+        assert_matches_type(AgentCreateResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -93,7 +94,7 @@ class TestAgents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = response.parse()
-        assert_matches_type(APIResponseAgent, agent, path=["response"])
+        assert_matches_type(AgentCreateResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -106,7 +107,7 @@ class TestAgents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = response.parse()
-            assert_matches_type(APIResponseAgent, agent, path=["response"])
+            assert_matches_type(AgentCreateResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -541,7 +542,7 @@ class TestAsyncAgents:
             gender="gender",
             name="name",
         )
-        assert_matches_type(APIResponseAgent, agent, path=["response"])
+        assert_matches_type(AgentCreateResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -591,7 +592,7 @@ class TestAsyncAgents:
             visibility="PUBLIC",
             voice_id="voice_id",
         )
-        assert_matches_type(APIResponseAgent, agent, path=["response"])
+        assert_matches_type(AgentCreateResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -604,7 +605,7 @@ class TestAsyncAgents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = await response.parse()
-        assert_matches_type(APIResponseAgent, agent, path=["response"])
+        assert_matches_type(AgentCreateResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -617,7 +618,7 @@ class TestAsyncAgents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = await response.parse()
-            assert_matches_type(APIResponseAgent, agent, path=["response"])
+            assert_matches_type(AgentCreateResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

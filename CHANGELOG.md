@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.19.0 (2025-10-21)
+
+Full Changelog: [v0.18.0...v0.19.0](https://github.com/NascentCore/inty-python/compare/v0.18.0...v0.19.0)
+
+### Features
+
+* **api:** manual updates ([2a2b19d](https://github.com/NascentCore/inty-python/commit/2a2b19dadc63e503b9d51d9ad20f47d6dfeb00eb))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([ce499c3](https://github.com/NascentCore/inty-python/commit/ce499c3b33eb5c9ee682ff3805da5cbd9b99a4b5))
+
 ## 0.18.0 (2025-10-14)
 
 Full Changelog: [v0.17.0...v0.18.0](https://github.com/NascentCore/inty-python/compare/v0.17.0...v0.18.0)
