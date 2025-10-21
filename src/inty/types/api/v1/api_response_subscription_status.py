@@ -39,11 +39,14 @@ class Data(BaseModel):
     subscription_status: str
     """订阅详细状态：subscribed/subscribed_expiring/unsubscribed"""
 
+    agent_creation_24h_limit: Optional[int] = None
+    """24 小时内 Agent 创建数量限制"""
+
     agent_creation_limit: Optional[int] = None
-    """Agent 创建数量限制"""
+    """Agent 创建数量限制（已废弃，使用 agent_creation_24h_limit）"""
 
     background_generation_limit_per_day: Optional[int] = None
-    """每日背景图生成次数限制"""
+    """每日背景图生成次数限制（已废弃，使用 image_gen_24h_limit）"""
 
     chat_24h_limit: Optional[int] = None
     """24 小时内聊天次数限制（免费用户）"""
@@ -65,6 +68,9 @@ class Data(BaseModel):
 
     has_ever_subscribed: Optional[bool] = None
     """是否曾经有过订阅记录"""
+
+    image_gen_24h_limit: Optional[int] = None
+    """24 小时内图片生成次数限制"""
 
     plan: Optional[SubscriptionPlan] = None
     """订阅计划响应模型"""

@@ -33,6 +33,7 @@ from .....types.api.v1.ai.agent_visibility import AgentVisibility
 from .....types.api.v1.ai.api_response_agent import APIResponseAgent
 from .....types.api.v1.ai.model_config_param import ModelConfigParam
 from .....types.api.v1.ai.agent_list_response import AgentListResponse
+from .....types.api.v1.ai.agent_create_response import AgentCreateResponse
 from .....types.api.v1.ai.agent_meta_data_param import AgentMetaDataParam
 from .....types.api.v1.ai.api_response_pagination_data_agent import APIResponsePaginationDataAgent
 
@@ -98,7 +99,7 @@ class AgentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> APIResponseAgent:
+    ) -> AgentCreateResponse:
         """
         Create new AI agent, used by app and inty-eval
 
@@ -171,7 +172,7 @@ class AgentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=APIResponseAgent,
+            cast_to=AgentCreateResponse,
         )
 
     def retrieve(
@@ -669,7 +670,7 @@ class AsyncAgentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> APIResponseAgent:
+    ) -> AgentCreateResponse:
         """
         Create new AI agent, used by app and inty-eval
 
@@ -742,7 +743,7 @@ class AsyncAgentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=APIResponseAgent,
+            cast_to=AgentCreateResponse,
         )
 
     async def retrieve(
